@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+}
+
+
+#main{
+    display: block;
+    height: auto;
+}
+/* =========================== TOP CONTAINER SECTION ========================= */
+#top-container{
+    border: none;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #17A2B8;
+}
+#top-container p {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+}
+
+
+/* ========================= FORM SECTION ================================= */
+#form-wrapper{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+#login-form{
+    border-top: solid 5px #17A2B8;
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow:  0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+#login-form .form-header{
+    background-color: #6C757D;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#login-form .form-header p {
+    font-size: 1.3rem;
+    text-align: center;
+    color: white;
+}
+
+/* form group fields section */
+
+#login-form .form-group-fields{
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    padding: 10px;
+    margin: 5px;
+}
+
+/* username */
+#login-form #username-validate-message{
+    margin-bottom: 10px;
+    border: solid 1.5px #DC3545;
+    position: relative;
+    padding: 10px;
+    background-color: #F9BBC1;
+    display: none;
+}
+
+
+
+#username-validate-message i{
+    position:absolute;
+    color: red;
+    top: 1px;
+    right: 2px;
+    font-size: 1.5em;
+}
+#username-validate-message p{
+    position:absolute;
+    top: 2px;
+    left:2px;
+    color: #DC3545;
+    
+}
+/* password */
+
+#login-form #password-validate-message{
+    margin-bottom: 10px;
+    border: solid 1.5px #DC3545;
+    position: relative;
+    padding: 10px;
+    background-color: #F9BBC1;
+    display: none;
+}
+#password-validate-message i{
+    position:absolute;
+    color: red;
+    top: 1px;
+    right: 2px;
+    font-size: 1.5em;
+}
+
+#password-validate-message p{
+    position:absolute;
+    top: 2px;
+    left:2px;
+    color: #DC3545;
+    
+}
+
+#login-form .form-group-fields label{
+    color:#343a40;
+}
+#login-form .form-group-fields input{
+    padding: 2px;
+    outline: none;
+}
+
+
+
+/* form button group section */
+
+#login-form .form-group-button{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#login-form .form-group-button #btn-login{
+    width: 100px;
+    height: 30px;
+    background-color: #6C757D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition-duration: .2s;
+    border-radius: 3px;
+    outline: none                                   ;
+}
+#login-form .form-group-button #btn-login:hover{
+    background-color: #5a6268;
+}
+
+#backend-validate-message{
+    text-align: center;
+    padding: 5px;
+    margin: 20px;
+    font-size: 1em;
+    border: solid 1px #DC3545;
+    background-color: #F9BBC1;
+    color: #DC3545;
+    display: none;
+}

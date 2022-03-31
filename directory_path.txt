@@ -1,0 +1,1 @@
+/mnt/c/xampp/htdocs/pos_inventory_repo
