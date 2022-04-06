@@ -29,7 +29,7 @@ class Login extends Queries{
      public function validateCredentials(){
         if(isset($_REQUEST['username']) && isset($_REQUEST['password'])){
             $username = $_REQUEST['username'];
-            $password = $_REQUEST['password'];
+            $password = md5($_REQUEST['password']);
             
             if($this->getCredentials($username, $password)){
                  echo 1;
