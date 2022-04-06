@@ -4,11 +4,19 @@ var sName = document.getElementById("content-supplier-input-name");
 var sAddress = document.getElementById("content-supplier-input-address");
 var sPhoneNo = document.getElementById("content-supplier-input-phoneNo");
 
+
+// input buttons
+var btnSave = document.getElementById("content-supplier-input-btnSave");
+var btnEdit = document.getElementById("content-supplier-input-btnEdit");
+var btnDelete = document.getElementById("content-supplier-input-btnDelete");
+var btnClear = document.getElementById("content-supplier-input-btnClear");
+
 window.addEventListener("load", loadComponents);
 
 function loadComponents() {
     initEventListeners();
     displayAllSupplier();
+    btnNew_btnUpdateDelete_EntryClicked();
 }
 
 
@@ -34,11 +42,6 @@ function createXMLHttpRequest(method, url, data) {
 }
 
 function initEventListeners() {
-    // input buttons
-    const btnSave = document.getElementById("content-supplier-input-btnSave");
-    const btnEdit = document.getElementById("content-supplier-input-btnEdit");
-    const btnDelete = document.getElementById("content-supplier-input-btnDelete");
-    const btnClear = document.getElementById("content-supplier-input-btnClear");
 
     // add event Listener
     btnSave.addEventListener("click", addSupplier);
@@ -61,6 +64,38 @@ function initEventListeners() {
     // ========== End of filter table =============
 }
 
+function btnNew_btnUpdateDelete_EntryClicked(){
+    const btnNewEntry = document.getElementById("content-supplier-button-btnNewEntry");
+    btnNewEntry.addEventListener("click",() =>{
+        const groupWrapper1 = document.getElementsByClassName("content-supplier-input-text-group-wrapper")[0];
+        groupWrapper1.style.display = "flex";
+        const groupWrapper2 = document.getElementsByClassName("content-supplier-input-button-group-wrapper")[0];
+        groupWrapper2.style.display = "flex";
+
+
+        btnDelete.style.display = "none";
+        btnEdit.style.display = "none";
+        btnNewEntry.style.display = "none";
+        btnUpdateDelete.style.display = "none";
+    });
+
+    const btnUpdateDelete = document.getElementById("content-supplier-button-btnEditDeleteEntry");
+    btnUpdateDelete.addEventListener("click",() =>{
+        const groupWrapper1 = document.getElementsByClassName("content-supplier-input-text-group-wrapper")[0];
+        groupWrapper1.style.display = "flex";
+        const groupWrapper2 = document.getElementsByClassName("content-supplier-input-button-group-wrapper")[0];
+        groupWrapper2.style.display = "flex";
+
+
+        btnSave.style.display = "none";
+        btnNewEntry.style.display = "none";
+        btnUpdateDelete.style.display = "none";
+
+
+    });
+
+
+}
 
 function getSelectedRowData() {
     const tbodyEl = document.getElementById("content-supplier-table-body");
@@ -87,6 +122,7 @@ function getSelectedRowData() {
                 }
             }
         }
+
     }
 
 

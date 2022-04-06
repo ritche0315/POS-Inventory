@@ -312,6 +312,7 @@ body{
   display: flex;
   flex-direction: column;
   margin: 10px;
+  display: none;
 }
 /* input-text */
 .content-maincontent-container > #content-supplier-form > #content-supplier-input-container > 
@@ -328,12 +329,17 @@ body{
 }
 
 
+
+
+
+
 /* input-button */
 .content-maincontent-container > #content-supplier-form > #content-supplier-input-container > 
 .content-supplier-input-wrapper > .content-supplier-input-button-group-wrapper{
     display: flex;
     justify-content: center;
     margin: 30px 10px 10px 10px;
+    display: none;
 }
 
 .content-maincontent-container > #content-supplier-form > #content-supplier-input-container > 
@@ -387,4 +393,31 @@ body{
     background-color: #6c757d;
     color: #fff;
     text-align: center;
+}
+
+
+/* entry section */
+.content-maincontent-container > #content-supplier-form > #content-supplier-input-container > 
+.content-supplier-input-wrapper > .content-supplier-button-entry-wrapper{
+    display: flex;
+}
+
+
+.content-maincontent-container > #content-supplier-form > #content-supplier-input-container > 
+.content-supplier-input-wrapper > .content-supplier-button-entry-wrapper > .content-supplier-button-entry > .icon{
+    margin-right: 5px;
+}
+.content-maincontent-container > #content-supplier-form > #content-supplier-input-container > 
+.content-supplier-input-wrapper > .content-supplier-button-entry-wrapper > .content-supplier-button-entry{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border:none;
+    background-color: #6C757D;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+    width: 100%;
 }

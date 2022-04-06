@@ -7,7 +7,7 @@ var sPhoneNo = document.getElementById("content-supplier-input-phoneNo");
 
 
 function addSupplier() {
-    const action = "add";
+    var action = "add";
     if (validateForm(action)) {
         let sObj = {
             id: sId.value,
@@ -39,7 +39,7 @@ function addSupplier() {
 }
 
 function editSupplier() {
-    const action = "edit";
+    var action = "edit";
     if (validateForm(action)) {
         let sObj = {
             id: sId.value,
@@ -77,7 +77,7 @@ function editSupplier() {
 }
 
 function deleteSupplier() {
-    const action = "delete";
+    var action = "delete";
     if (validateForm(action)) {
         if (confirm("Are you sure do you want to delete this record " + sId.value)) {
             let xhr = createXMLHttpRequest("GET", "../controllers/supplier-controller.php?delSupplier=" + sId.value, null);

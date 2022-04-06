@@ -146,6 +146,16 @@
                             <div id="content-supplier-input-header">
                                 <h1>Supplier Entry</h1>
                             </div>
+                            <div class="content-supplier-button-entry-wrapper">
+                                <button class="content-supplier-button-entry" id="content-supplier-button-btnNewEntry">
+                                    <i class="fa-solid fa-circle-plus icon"></i>
+                                    <p>New Entry</p>
+                                </button>
+                                <button class="content-supplier-button-entry" id="content-supplier-button-btnEditDeleteEntry">
+                                    <i class="fa-solid fa-circle-plus icon"></i>
+                                    <p>Update/Delete Entry</p>
+                                </button>
+                            </div>
                             <div class="content-supplier-input-text-group-wrapper">
                                 <label for="content-supplier-input-id">ID:</label>
                                 <input class="content-supplier-input-group" type="text" id="content-supplier-input-id">
