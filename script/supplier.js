@@ -1,4 +1,5 @@
 var sform = document.getElementById("content-supplier-form");
+var sIdLabel = document.getElementById("content-supplier-input-id-label");
 var sId = document.getElementById("content-supplier-input-id");
 var sName = document.getElementById("content-supplier-input-name");
 var sAddress = document.getElementById("content-supplier-input-address");
@@ -72,11 +73,15 @@ function btnNew_btnUpdateDelete_EntryClicked(){
         const groupWrapper2 = document.getElementsByClassName("content-supplier-input-button-group-wrapper")[0];
         groupWrapper2.style.display = "flex";
 
-
+        sIdLabel.style.display = "none";
+        sId.style.display = "none";
         btnDelete.style.display = "none";
         btnEdit.style.display = "none";
         btnNewEntry.style.display = "none";
         btnUpdateDelete.style.display = "none";
+
+        
+
     });
 
     const btnUpdateDelete = document.getElementById("content-supplier-button-btnEditDeleteEntry");
@@ -91,10 +96,18 @@ function btnNew_btnUpdateDelete_EntryClicked(){
         btnNewEntry.style.display = "none";
         btnUpdateDelete.style.display = "none";
 
-
+        displaySelectButton();
     });
 
 
+}
+
+
+function displaySelectButton(){
+    var x = document.getElementsByClassName("content-supplier-table-btnSelect");
+    for(let i=0; i< x.length; i++){
+        x[i].style.display = "block";
+    }
 }
 
 function getSelectedRowData() {

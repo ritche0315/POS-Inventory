@@ -131,6 +131,17 @@
                 <div class="account-row-1-col-1">
                     <form onsubmit="return false">
                         <h1>Account Entry</h1>
+                        <div class="account-entry-wrapper">
+                            <button class="account-entry-button" id="account-entry-btnNew">
+                                <i class="fa-solid fa-circle-plus icon"></i>
+                                <p>New Account</p>
+                            </button>
+
+                            <button class="account-entry-button" id="account-entry-btnUpdateDelete">
+                            <i class="fa-solid fa-square-pen icon"></i>
+                                <p>Update/Delete Account</p>
+                            </button>
+                        </div>
                         <div class="form-inputfield-group">
                             <label for="account-id">User ID:</label>
                             <input class="input-field" type="text" id="account-id" autocomplete=off>

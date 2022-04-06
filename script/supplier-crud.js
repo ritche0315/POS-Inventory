@@ -61,16 +61,18 @@ function editSupplier() {
                         alert("Record supplier" + sObj.id + " is successfully updated from the database!");
                         sform.reset();
                         displayAllSupplier();
+                        refreshTable();
                     }
                 } else {
                     alert("Something wrong on the server!");
                 }
             }
 
-            refreshTable();
         } else {
             alert("Action update was cancelled!");
         }
+
+        
     }
 
 
@@ -112,6 +114,11 @@ function displayAllSupplier() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let serverResponse = JSON.parse(xhr.responseText);
             populateTable(serverResponse);
+            
+            var x = document.getElementsByClassName("content-supplier-table-btnSelect");
+            for(let i=0; i< x.length; i++){
+                x[i].style.display = "none";
+            }
         } else {
             alert("Something wrong on the server!");
         }

@@ -4,6 +4,12 @@ var accUsername = document.getElementById("account-username");
 var accPassword = document.getElementById("account-password");
 var accType = document.getElementById("account-type");
 
+var btnInsert = document.getElementById("btnInsert");
+var btnEdit = document.getElementById("btnEdit");
+var btnDelete = document.getElementById("btnDelete");
+var btnClear = document.getElementById("btnClear");
+
+var accForm = document.querySelector("form");
 
 window.addEventListener("load", init);
 
@@ -13,9 +19,40 @@ function init() {
 
     document.getElementById("account-search-input").addEventListener("keyup", filterTable);
     // button action
-    document.getElementById("btnInsert").addEventListener("click", insertAccount);
-    document.getElementById("btnEdit").addEventListener("click", editAccount);
-    document.getElementById("btnDelete").addEventListener("click", deleteAccount);
+    btnInsert.addEventListener("click", insertAccount);
+    btnEdit.addEventListener("click", editAccount);
+    btnDelete.addEventListener("click", deleteAccount);
+    btnClear.addEventListener("click", () =>{
+        accForm.reset();
+    });
+    btnNew_btnUpdateDelete_EntryClicked();
+}
+
+function btnNew_btnUpdateDelete_EntryClicked(){
+    const btnNew = document.getElementById("account-entry-btnNew");
+    const btnUpdateDelete = document.getElementById("account-entry-btnUpdateDelete");
+    const entryWrapper = document.getElementsByClassName("account-entry-wrapper")[0];
+    btnNew.addEventListener("click", ()=>{
+        const a = document.getElementsByClassName("form-inputfield-group")[0];
+        const b = document.getElementsByClassName("form-button-group")[0];
+
+        a.style.display = "grid";
+        b.style.display = "grid";
+        btnEdit.style.display = "none";
+        btnDelete.style.display = "none";
+        entryWrapper.style.display = "none";
+    });
+
+    btnUpdateDelete.addEventListener("click", ()=>{
+        const a = document.getElementsByClassName("form-inputfield-group")[0];
+        const b = document.getElementsByClassName("form-button-group")[0];
+
+        a.style.display = "grid";
+        b.style.display = "grid";
+        btnInsert.style.display = "none";
+
+        entryWrapper.style.display = "none";
+    });
 }
 
 function validateForm(action) {

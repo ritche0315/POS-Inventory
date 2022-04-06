@@ -157,7 +157,7 @@
                                 </button>
                             </div>
                             <div class="content-supplier-input-text-group-wrapper">
-                                <label for="content-supplier-input-id">ID:</label>
+                                <label id="content-supplier-input-id-label" for="content-supplier-input-id">ID:</label>
                                 <input class="content-supplier-input-group" type="text" id="content-supplier-input-id">
 
                                 <label for="content-supplier-input-name">Name:</label>
