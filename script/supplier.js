@@ -12,12 +12,14 @@ var btnEdit = document.getElementById("content-supplier-input-btnEdit");
 var btnDelete = document.getElementById("content-supplier-input-btnDelete");
 var btnClear = document.getElementById("content-supplier-input-btnClear");
 
+
 window.addEventListener("load", loadComponents);
 
 function loadComponents() {
     initEventListeners();
     displayAllSupplier();
     btnNew_btnUpdateDelete_EntryClicked();
+    
 }
 
 
@@ -103,12 +105,8 @@ function btnNew_btnUpdateDelete_EntryClicked(){
 }
 
 
-function displaySelectButton(){
-    var x = document.getElementsByClassName("content-supplier-table-btnSelect");
-    for(let i=0; i< x.length; i++){
-        x[i].style.display = "block";
-    }
-}
+
+
 
 function getSelectedRowData() {
     const tbodyEl = document.getElementById("content-supplier-table-body");
@@ -217,9 +215,9 @@ function validateForm(action) {
 
 }
 
-function populateTable(serverResponse) {
+function populateTable(serverResponse, action) {
 
-
+    
     let counts = 1;
     for (objData in serverResponse) {
         const tbodyEl = document.getElementById("content-supplier-table-body");
@@ -232,7 +230,6 @@ function populateTable(serverResponse) {
         const selectTd_El = document.createElement("td");
         const seqTd_El = document.createElement("td");
         const selectBtn = document.createElement("button");
-
 
         selectBtn.className = "content-supplier-table-btnSelect";
         selectBtn.textContent = "SELECT";
@@ -254,6 +251,32 @@ function populateTable(serverResponse) {
 
         counts++;
         tbodyEl.appendChild(tr);
+        
+    }
+    
+    if(action != "edit"){
+        hideSelectButton();
+    }
+    else if(action != "delete"){
+        hideSelectButton();
+    }
+}
+
+function hideSelectButton(){
+    const tblBody = document.getElementById("content-supplier-table-body");
+    
+    for(let i=0; i < tblBody.rows.length; i++){
+        // console.log(tblBody.rows[i].cells[5].textContent);
+        tblBody.rows[i].cells[5].firstChild.style.display = "none";
+    }
+}
+
+function displaySelectButton(){
+    const tblBody = document.getElementById("content-supplier-table-body");
+    
+    for(let i=0; i < tblBody.rows.length; i++){
+        // console.log(tblBody.rows[i].cells[5].textContent);
+        tblBody.rows[i].cells[5].firstChild.style.display = "block";
     }
 }
 

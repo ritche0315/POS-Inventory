@@ -27,13 +27,13 @@ function addSupplier() {
                 if (serverResponse.trim() === "1") {
                     alert("Record supplier " + sObj.id + " succesfully added to the database!");
                     sform.reset();
-                    displayAllSupplier();
+                    refreshTable();
+                    displayAllSupplier(action);
                 }
             } else {
                 alert("Something wrong on the server!");
             }
 
-            refreshTable();
         }
     }
 }
@@ -60,14 +60,15 @@ function editSupplier() {
                     if (serverResponse.trim() === "1") {
                         alert("Record supplier" + sObj.id + " is successfully updated from the database!");
                         sform.reset();
-                        displayAllSupplier();
-                        refreshTable();
+                        refreshTable(); 
+                        displayAllSupplier(action);
+                        displaySelectButton();
+                          
                     }
                 } else {
                     alert("Something wrong on the server!");
                 }
             }
-
         } else {
             alert("Action update was cancelled!");
         }
@@ -91,13 +92,13 @@ function deleteSupplier() {
                     if (serverResponse.trim() === "1") {
                         alert("Record supplier " + sId.value + " is successfully deleted from the database!");
                         sform.reset();
-                        displayAllSupplier();
+                        refreshTable();
+                        displayAllSupplier(action);
                     }
                 } else {
                     alert("Something wrong on the server!");
                 }
 
-                refreshTable();
             }
         } else {
             alert("Action delete was cancelled!");
@@ -107,22 +108,18 @@ function deleteSupplier() {
 
 }
 
-function displayAllSupplier() {
+function displayAllSupplier(action) {
     let xhr = createXMLHttpRequest("GET", "../controllers/supplier-controller.php?showSuppliers", null);
 
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let serverResponse = JSON.parse(xhr.responseText);
-            populateTable(serverResponse);
-            
-            var x = document.getElementsByClassName("content-supplier-table-btnSelect");
-            for(let i=0; i< x.length; i++){
-                x[i].style.display = "none";
-            }
+            populateTable(serverResponse,action);
         } else {
             alert("Something wrong on the server!");
         }
     }
+
 }
 
 
