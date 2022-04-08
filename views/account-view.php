@@ -143,7 +143,7 @@
                             </button>
                         </div>
                         <div class="form-inputfield-group">
-                            <label for="account-id">User ID:</label>
+                            <label id="account-id-label" for="account-id">User ID:</label>
                             <input class="input-field" type="text" id="account-id" autocomplete=off>
 
                             <label for="account-fullname">Name:</label>

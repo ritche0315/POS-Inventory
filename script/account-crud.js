@@ -26,7 +26,7 @@ function insertAccount() {
                     alert("Account "+accID.value+" successfully added to the database");
                     accForm.reset();
                     refreshTable();
-                    displayAccounts();
+                    displayAccounts(action);
                 }
             }
        
@@ -57,7 +57,7 @@ function editAccount() {
                         alert("Account "+acc.id+" successfully updated from the database");
                         accForm.reset();
                         refreshTable();
-                        displayAccounts();
+                        displayAccounts(action);
                     }
                 }
            
@@ -84,7 +84,7 @@ function deleteAccount() {
                         alert("Account "+accID.value+" successfully deleted from the database");
                         accForm.reset();
                         refreshTable();
-                        displayAccounts();
+                        displayAccounts(action);
                     }
                 }
            
@@ -95,14 +95,21 @@ function deleteAccount() {
     }
 }
 
-function displayAccounts() {
+function displayAccounts(action) {
     let xhr = createXMLHttpRequest("GET", "../controllers/account-controller.php?getAccounts", null);
 
     xhr.onload = function () {
         const serverResponse = JSON.parse(xhr.responseText);
-
-        console.log(serverResponse);
         populateTable(serverResponse);
+        if(action === "edit"){
+            displaySelectButton();
+        }
+        else if(action === "delete"){
+            displaySelectButton();
+        }
+        else{
+            hideSelectButton();
+        }
     }
 
 

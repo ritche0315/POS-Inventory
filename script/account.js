@@ -35,7 +35,10 @@ function btnNew_btnUpdateDelete_EntryClicked(){
     btnNew.addEventListener("click", ()=>{
         const a = document.getElementsByClassName("form-inputfield-group")[0];
         const b = document.getElementsByClassName("form-button-group")[0];
+        const c = document.getElementById("account-id-label");
 
+        c.style.display = "none";
+        accID.style.display = "none";
         a.style.display = "grid";
         b.style.display = "grid";
         btnEdit.style.display = "none";
@@ -52,6 +55,8 @@ function btnNew_btnUpdateDelete_EntryClicked(){
         btnInsert.style.display = "none";
 
         entryWrapper.style.display = "none";
+
+        displaySelectButton();
     });
 }
 
@@ -225,6 +230,20 @@ function populateTable(serverResponse) {
 
         counts++;
         tbodyEl.appendChild(tr);
+    }
+}
+
+function hideSelectButton(){
+    const tbody = document.getElementById("account-table-tbody");
+    for(let i=0; i < tbody.rows.length; i++){
+        tbody.rows[i].cells[6].firstChild.style.display = "none";
+    }
+}
+
+function displaySelectButton(){
+    const tbody = document.getElementById("account-table-tbody");
+    for(let i=0; i < tbody.rows.length; i++){
+        tbody.rows[i].cells[6].firstChild.style.display = "block";
     }
 }
 
