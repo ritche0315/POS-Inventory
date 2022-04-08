@@ -1,33 +1,36 @@
 <?php
 
-include '../models/person-model.php';
 class Stock{
 
     
-    private $sId;
-    private $sQty;
-    private $sDate;
+    private $stockId;
+    private $stockQty;
+    private $stockDate;
     private Supplier $sup;
     private Product $prod;
 
+    private Queries $query;
+
     public function __construct(){
+        $this->query = new Queries();
+    }
+
+    protected function addStock(){
 
     }
 
-    private function addStock(){
+    protected function deleteStock(){
 
     }
 
-    private function deleteStock(){
+    protected function updateStock(){
 
     }
 
-    private function updateStock(){
-
-    }
-
-    private function displayAllStock(){
-
+    protected function displayAllStock(){
+        $sql = "SELECT stock_id as 'id', prod_id as 'product_id', sprice as 'supplier_price', qty as 'quantity', supplier_id, user_id as 'account_id' FROM tblstock";
+        
+        echo json_encode($this->query->selectRecord($sql));
     }
 }
 

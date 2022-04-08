@@ -14,6 +14,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Page</title>
+    <script src="../script/stock-crud.js" defer></script>
     <script src="../script/stock.js" defer></script>
     <script src="../script/all.js" defer></script>
 </head>
@@ -155,7 +156,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                                 <th>Action</th>
                             </thead>
                             <tbody id="stock-tbody">
-                                <tr>
+                                <!-- <tr>
                                     <td>Sample</td>
                                     <td>Sample</td>
                                     <td>Sample</td>
@@ -182,63 +183,9 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                                             </button>
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Ritche De guzman Laganson</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>
-                                        <div class="stock-action-button-group">
-                                            <button id="stock-btnEdit">
-                                                <i class="fa-solid fa-square-pen icon"></i>
-                                                <p>Edit</p>
-                                            </button>
-                                            <button id="stock-btnDelete">
-                                                <i class="fa-solid fa-trash-can icon"></i>
-                                                <p>Delete</p>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Ritche De guzman Laganson</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>Sample</td>
-                                    <td>
-                                        <div class="stock-action-button-group">
-                                            <button id="stock-btnEdit">
-                                                <i class="fa-solid fa-square-pen icon"></i>
-                                                <p>Edit</p>
-                                            </button>
-                                            <button id="stock-btnDelete">
-                                                <i class="fa-solid fa-trash-can icon"></i>
-                                                <p>Delete</p>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                </tr> -->
+                                
+                                
                             </tbody>
                         </table>
                     </div>
