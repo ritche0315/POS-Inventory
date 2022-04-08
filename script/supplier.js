@@ -19,7 +19,7 @@ function loadComponents() {
     initEventListeners();
     displayAllSupplier();
     btnNew_btnUpdateDelete_EntryClicked();
-    
+ 
 }
 
 
@@ -215,7 +215,7 @@ function validateForm(action) {
 
 }
 
-function populateTable(serverResponse, action) {
+function populateTable(serverResponse) {
 
     
     let counts = 1;
@@ -253,13 +253,6 @@ function populateTable(serverResponse, action) {
         tbodyEl.appendChild(tr);
         
     }
-    
-    if(action != "edit"){
-        hideSelectButton();
-    }
-    else if(action != "delete"){
-        hideSelectButton();
-    }
 }
 
 function hideSelectButton(){
@@ -275,7 +268,6 @@ function displaySelectButton(){
     const tblBody = document.getElementById("content-supplier-table-body");
     
     for(let i=0; i < tblBody.rows.length; i++){
-        // console.log(tblBody.rows[i].cells[5].textContent);
         tblBody.rows[i].cells[5].firstChild.style.display = "block";
     }
 }

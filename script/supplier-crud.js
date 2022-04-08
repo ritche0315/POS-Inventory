@@ -53,7 +53,6 @@ function editSupplier() {
             let xhr = createXMLHttpRequest("POST", "../controllers/supplier-controller.php", "editSupplier=" + converted_sObj);
 
             xhr.onload = function () {
-                //do this
 
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     let serverResponse = xhr.responseText;
@@ -62,7 +61,6 @@ function editSupplier() {
                         sform.reset();
                         refreshTable(); 
                         displayAllSupplier(action);
-                        displaySelectButton();
                           
                     }
                 } else {
@@ -114,7 +112,15 @@ function displayAllSupplier(action) {
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let serverResponse = JSON.parse(xhr.responseText);
-            populateTable(serverResponse,action);
+            populateTable(serverResponse);
+            if(action === "edit"){
+                displaySelectButton();
+            }
+            else if(action === "delete"){
+                displaySelectButton();
+            }else{
+                hideSelectButton();
+            }   
         } else {
             alert("Something wrong on the server!");
         }
