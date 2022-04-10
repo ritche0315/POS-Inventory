@@ -28,7 +28,11 @@ class Stock{
     }
 
     protected function displayAllStock(){
-        $sql = "SELECT stock_id as 'id', prod_id as 'product_id', sprice as 'supplier_price', qty as 'quantity', supplier_id, user_id as 'account_id' FROM tblstock";
+        $sql = "SELECT A.stock_id as 'id', B.prod_id as 'product_id', A.sprice as 'supplier_price', A.qty as 'quantity', 
+        C.supplier_id, D.user_id as 'account_id' FROM tblstock A 
+        INNER JOIN tblproduct B on A.prod_id = B.prod_id 
+        INNER JOIN tblsupplier C on A.supplier_id = C.supplier_id 
+        INNER JOIN tbluser D on A.user_id = D.user_id";
         
         echo json_encode($this->query->selectRecord($sql));
     }

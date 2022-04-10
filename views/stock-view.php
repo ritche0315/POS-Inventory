@@ -146,17 +146,17 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                                 <th>Description</th>
                                 <th>Category</th>
                                 <th>Supplier Price</th>
-                                <th>Price1</th>
-                                <th>Price2</th>
-                                <th>Price3</th>
-                                <th>Quantity</th>
+                                <th>Retail</th>
+                                <th>Whole Sale</th>
+                                <th>Special</th>
+                                <th>Current Stocks</th>
                                 <th>Reorder Level</th>
                                 <th>Drawer No</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </thead>
                             <tbody id="stock-tbody">
-                                <!-- <tr>
+                                <tr>
                                     <td>Sample</td>
                                     <td>Sample</td>
                                     <td>Sample</td>
@@ -183,8 +183,175 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                                             </button>
                                         </div>
                                     </td>
-                                </tr> -->
-                                
+                                </tr>
+                                <tr>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Ritche De guzman Laganson</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>
+                                        <div class="stock-action-button-group">
+                                            <button id="stock-btnEdit">
+                                                <i class="fa-solid fa-square-pen icon"></i>
+                                                <p>Edit</p>
+                                            </button>
+                                            <button id="stock-btnDelete">
+                                                <i class="fa-solid fa-trash-can icon"></i>
+                                                <p>Delete</p>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Ritche De guzman Laganson</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>
+                                        <div class="stock-action-button-group">
+                                            <button id="stock-btnEdit">
+                                                <i class="fa-solid fa-square-pen icon"></i>
+                                                <p>Edit</p>
+                                            </button>
+                                            <button id="stock-btnDelete">
+                                                <i class="fa-solid fa-trash-can icon"></i>
+                                                <p>Delete</p>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Ritche De guzman Laganson</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>
+                                        <div class="stock-action-button-group">
+                                            <button id="stock-btnEdit">
+                                                <i class="fa-solid fa-square-pen icon"></i>
+                                                <p>Edit</p>
+                                            </button>
+                                            <button id="stock-btnDelete">
+                                                <i class="fa-solid fa-trash-can icon"></i>
+                                                <p>Delete</p>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Ritche De guzman Laganson</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>
+                                        <div class="stock-action-button-group">
+                                            <button id="stock-btnEdit">
+                                                <i class="fa-solid fa-square-pen icon"></i>
+                                                <p>Edit</p>
+                                            </button>
+                                            <button id="stock-btnDelete">
+                                                <i class="fa-solid fa-trash-can icon"></i>
+                                                <p>Delete</p>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Ritche De guzman Laganson</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>
+                                        <div class="stock-action-button-group">
+                                            <button id="stock-btnEdit">
+                                                <i class="fa-solid fa-square-pen icon"></i>
+                                                <p>Edit</p>
+                                            </button>
+                                            <button id="stock-btnDelete">
+                                                <i class="fa-solid fa-trash-can icon"></i>
+                                                <p>Delete</p>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Ritche De guzman Laganson</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>Sample</td>
+                                    <td>
+                                        <div class="stock-action-button-group">
+                                            <button id="stock-btnEdit">
+                                                <i class="fa-solid fa-square-pen icon"></i>
+                                                <p>Edit</p>
+                                            </button>
+                                            <button id="stock-btnDelete">
+                                                <i class="fa-solid fa-trash-can icon"></i>
+                                                <p>Delete</p>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
                                 
                             </tbody>
                         </table>
