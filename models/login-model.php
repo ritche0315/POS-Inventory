@@ -1,8 +1,10 @@
 <?php
 
 class Login extends Queries{
-    
+    private $user;
+
     public function __construct() {
+        $this->user = "";
     }
 
     public function getCredentials($username, $password){
@@ -13,8 +15,9 @@ class Login extends Queries{
            $data = $myObj->selectRecord($sql);
            if($data != null){
                 foreach($data as $row){
-                    if($username == $row['username'] && $password == $row['userpass']){
+                    if(trim(strtolower($username)) == trim(strtolower($row['username'])) && trim(strtolower($password)) == trim(strtolower($row['userpass']))){
                         $isExist = true;
+                        $this->user = $row['name'];
                         return $isExist;
                         break;
                     }
@@ -26,18 +29,19 @@ class Login extends Queries{
            }
     }
     
-     public function validateCredentials(){
-        if(isset($_REQUEST['username']) && isset($_REQUEST['password'])){
-            $username = $_REQUEST['username'];
-            $password = md5($_REQUEST['password']);
-            
-            if($this->getCredentials($username, $password)){
-                 echo 1;
-                 $_SESSION['loginSession'] = "Valid";
-            }else{
-                 echo 2;
-                 $_SESSION['loginSession'] = "Invalid";
-            }
+     public function validateCredentials($username, $password){
+        if($this->getCredentials($username, $password)){
+            $data = [];
+            $data["isExist"] = 1; 
+            $data["user"] = $this->user;
+            echo json_encode($data);
+            $_SESSION['loginSession'] = "Valid";
+        }else{
+            $data = [];
+            $data["isExist"] = 2; 
+            $data["user"] = $this->user;
+            echo json_encode($data);
+            $_SESSION['loginSession'] = "Invalid";
         }
 
     }
