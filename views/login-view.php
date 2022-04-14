@@ -4,8 +4,6 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Valid"){
     $_SESSION['loginSession'] = "Valid";
     header("Location:../views/admin-view.php");
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,46 +12,34 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Valid"){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
     <script src="../script/login.js" defer></script>
-
+    <title>Login Page</title>
+</head>
 <body>
-    <div id="main">
-        <div id="top-container">
-            <p>WELCOME TO POINT OF SALE SYSTEM</p>
-        </div>
-            <div id="form-wrapper">
-                <form method="POST" id="login-form" >
-                    <div class="form-header">
-                        <p>System Administrator Login</p>
-                    </div>
-                        <div class="form-group-fields">
-                            <label for="username">Username:</label>
-                                <input type="text" name="username" id="username" class="form_data" autofocus autocomplete="off">
-                                    <div id="username-validate-message">
-                                        <p>Username is empty</p>
-                                        <i class="fa-solid fa-circle-exclamation"></i>
-                                        
-                                    </div>
-                            
-                            <label for="password">Password:</label>
-                                <input type="password" name="password" id="password" autocomplete="off" autofocus>
-                                    <div id="password-validate-message">
-                                        <p>Password is empty</p>
-                                        <i class="fa-solid fa-circle-exclamation"></i>
-                                    </div>
-                        </div>
-                    
-                    <div class="form-group-button">
-                        <input type="button" name="btn-login" id="btn-login" value="Login" onclick="return loginValidate()">
-                       
-                    </div>
-                    <div id="backend-validate-message"></div>
-                    
-                </form>
+    <div class="main">
+        <form onsubmit="return false">
+            <div class="group-form-items">
+                <img src="../images/pos-logo.svg" alt="pos-logo">
             </div>
-       
+            <div class="group-form-items">
+                <div class="group-form-textfield">
+                    <span class="icon-wrapper">
+                        <img class="icon" src="../images/user-icon.svg" alt="user-icon">
+                    </span>
+                    <input type="text" id="username-textfield" placeholder="USERNAME" autocomplete="off">
+                </div>
+                <div class="group-form-textfield">
+                    <span class="icon-wrapper">
+                        <img class="icon" src="../images/key-icon.svg" alt="key-icon">
+                    </span>
+                    <input type="password" id="password-textfield" placeholder="PASSWORD" autocomplete="off">
+                </div>
+               
+            </div>
+            <div class="group-form-items">
+                <input type="button" value="Login" id="submit-button">
+            </div>
+        </form>
     </div>
 </body>
 </html>
-
