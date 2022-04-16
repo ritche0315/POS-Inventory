@@ -19,7 +19,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Valid"){
     <div class="main">
         <form onsubmit="return false">
             <div class="group-form-items">
-                <img src="../images/pos-logo.svg" alt="pos-logo">
+                <img class="logo" src="../images/pos-logo.svg" alt="pos-logo">
             </div>
             <div class="group-form-items">
                 <div class="group-form-textfield">
