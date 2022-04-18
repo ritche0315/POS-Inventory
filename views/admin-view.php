@@ -18,130 +18,139 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 <body>
-    <div id="main">
+    <div class="main">
+
+<!-- =========================================== HEADER SECTION ============================================================= -->
         <div class="header">
-            <div class="container-company-logo">
-                <p>company logo</p>
+            <div class="user-account-info">
+                <?php include '../images/undraw_male_avatar.svg';?>
+                <label for="user-account-name">Name:</label>
+                <p id="user-account-name">Ritche Laganson</p>
+                <label for="user-account-role">Role:</label>     
+                <p id="user-account-role">System Administrator</p>
             </div>
-            <div class="container-user-info">
-                <div class="user-info-wrapper">
-                    <label for="user">User:</label>
-                    <label id="user">Ritche Laganson</label><br>
-                    <label for="role">Role:</label>
-                    <label id="role">System Administrator</label>
-                </div>
-            </div>
-            <div class="button-container">
-                    <button id="logout-btn" onclick="logoutClicked()">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <span>Logout</span>
-                    </button>
-            </div>
-           
-        </div>
-        <div class="sidebar">
-            <div class="sidebar-nav-container">
-                <div class="sidebar-grp-item active">
-                    <a href="../views/admin-view.php">
-                        <span id="active"></span>
-                        <i class="fa-solid fa-gauge icon"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="../views/product-view.php">
-                        <span></span>
-                        <i class="fa-solid fa-cart-shopping icon"></i>
-                        <p>Product</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="../views/supplier-view.php">
-                        <span></span>
-                        <i class="fa-solid fa-truck icon"></i>
-                        <p>Supplier</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-user-group icon"></i>
-                        <p>Accounts</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-layer-group icon"></i>
-                        <p>Stocks</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-cash-register icon"></i>
-                        <p>POS</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-clipboard icon"></i>
-                        <p>Reports</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-sliders icon"></i>
-                        <p>Settings</p>
-                    </a>
+
+            <div class="date-time">
+                <div class="date-time-wrapper">
+                    <span id="date">12:00:00 AM</span><br>
+                    <span id="time">Sunday, April 17, 2022</span>
                 </div>
             </div>
         </div>
+<!-- =========================================== END OF HEADER SECTION ============================================================= -->
+
+<!-- =========================================== SIDE-BAR SECTION ============================================================= -->
+        <div class="side-bar">
+            <!-- system logo -->
+            <div class="logo-wrapper">
+                <img class="logo" src="../images/pos-logo.svg" alt="pos-logo">
+                <p>Point of Sale System</p>
+            </div>
+
+            <!-- navigation -->
+            <div class="side-bar-navigation">
+                <a class="sidebar-nav-group active" href="#">
+                    <?php include '../images/location-arrow-solid.svg';?>
+                    <?php include '../images/gauge-solid.svg';?>
+                    <p>Dashboard</p>
+                </a> 
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/cart-shopping-solid.svg';?>
+                    <p>Product</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/truck-solid.svg';?>
+                    <p>Supplier</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/user-group-solid.svg';?>
+                    <p>Accounts</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/layer-group-solid.svg';?>
+                    <p>Stock</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/cash-register-solid.svg';?>
+                    <p>POS</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/clipboard-solid.svg';?>
+                    <p>Reports</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/sliders-solid.svg';?>
+                    <p>Settings</p>
+                </a>
+            </div>
+
+            <!-- logout -->
+            <div class="side-bar-logout">
+                <a href="#" id="sidebar-logout-btn">
+                    <!-- icon logout -->
+                    <?php include '../images/power-off-solid.svg';?>
+                    <p>LOGOUT</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- =========================================== END OF SIDE-BAR SECTION ============================================================= -->
 
 
+        <!-- =========================================== CONTENT SECTION ============================================================= -->
         <div class="content">
-            <div class="content-header-container">
-                <h1>Dashboard</h1>
-                <div class="date-container">
-                    <span id="idTime"></span>
-                    <span id="am_pm"></span>
-                    <span id="idDate"></span>
-                   
+            <!-- analytics overview for daily, stock-on-hand, critical stocks, product line-->
+            <div class="row-0-col-0">
+                <div class="group-items" id="daily-sales">
+                    <span class="icon-wrapper">
+                        <?php include '../images/peso-sign-solid.svg';?>
+                    </span>
+                    <p class="val">2000</p>
+                    <p class="title-report">Daily Sales</p>
                 </div>
-                
+                <div class="group-items" id="stock-on-hand">
+                    <span class="icon-wrapper">
+                        <?php include '../images/cart-shopping-solid.svg';?>
+                    </span>
+                    <p class="val">2000</p>
+                    <p class="title-report">Stock on hand</p>
+                </div>
+                <div class="group-items" id="critical-stocks">
+                    <span class="icon-wrapper">
+                        <?php include '../images/arrow-trend-down-solid.svg';?>
+                    </span>
+                    <p class="val">2000</p>
+                    <p class="title-report">Critical Stocks</p>
+                </div>
+                <div class="group-items" id="product-line">
+                    <span class="icon-wrapper">
+                        <?php include '../images/cubes-solid.svg';?>
+                    </span>
+                    <p class="val">2000</p>
+                    <p class="title-report">Product Line</p>
+                </div>
             </div>
-            <div class="content-maincontent-container">
-                <div class="content-maincontent-reports-container">
-                    <div class="reports-wrapper">
-                        <p class="titleReport">Daily Sales</p>
-                        <i class="fa-solid fa-peso-sign icon"></i>
-                        <p id="dailysaleVal">20000</p>
+
+            <!-- analytics overview for yearly sales-->
+            <div class="row-1-col-0">
+                <div class="row-1-item-1">
+                    <div class="group-items">
+                        <span id="year-color-represented"></span>
+                        <span id="year">2022</span>
                     </div>
-                    <div class="reports-wrapper">
-                        <p class="titleReport">Remaining Stocks</p>
-                        <i class="fa-solid fa-database icon"></i>
-                        <p id="dailysaleVal">20000</p>
-                    </div>
-                    <div class="reports-wrapper">
-                        <p class="titleReport">Critical Stocks</p>
-                        <i class="fa-solid fa-arrow-trend-down icon"></i>
-                        <p id="dailysaleVal">20000</p>
-                    </div>
-                    <div class="reports-wrapper">
-                        <p class="titleReport">Product Line</p>
-                        <i class="fa-solid fa-list icon"></i>
-                        <p id="dailysaleVal">20000</p>
+
+                    <!-- put here the pie chart -->
+                    <div class="group-items">
+                        <div class="chart-wrapper">
+
+                        </div>
                     </div>
                 </div>
-               
 
-                <div class="content-maincontent-myChart-container">
-                    <div class="chart-wrapper">
-                        
-                        <canvas id="myChart"></canvas>
-                    </div>
+                <div class="row-1-item-1-col-1">
+                        <p>YEARLY SALES</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum velit error accusantium, nisi at animi ex sed deleniti recusandae impedit culpa ab fugiat quae tempora tenetur ad molestiae sint. Culpa.
+                        Odit eveniet obcaecati expedita rem adipisci commodi eius dolore architecto consequuntur assumenda ea aperiam magni consequatur doloremque tempore ipsum atque, in facilis? Quisquam, sint repudiandae. Necessitatibus, numquam? Fugiat, ipsa maxime.</p>
                 </div>
             </div>
         </div>
