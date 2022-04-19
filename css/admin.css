@@ -87,6 +87,7 @@
     background-color: var(--color-primary6);
     margin: 10px 25px 25px 10px;
     box-shadow: 0 1px 12px 0 rgb(0,0,0,0.5);
+    overflow: auto;
     
 }
 
@@ -311,6 +312,7 @@
     justify-content: space-evenly;
     /* styling */
     width: 100%;
+    margin: 20px 0 20px 0;
 }
 
 .row-0-col-0 > .group-items{
@@ -342,7 +344,7 @@
 
 .group-items > .icon-wrapper{
     grid-area: icons;
-    border-right: solid 1px var(--color-primary3);
+    border-right: solid 1px var(--color-primary4);
     margin: auto 0 auto 10px;
 }
 .group-items > .icon-wrapper > svg{
