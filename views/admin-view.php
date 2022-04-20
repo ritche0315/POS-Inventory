@@ -32,8 +32,8 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
 
             <div class="date-time">
                 <div class="date-time-wrapper">
-                    <span id="date">12:00:00 AM</span><br>
-                    <span id="time">Sunday, April 17, 2022</span>
+                    <span id="time">Sunday, April 17, 2022</span><br>
+                    <span id="date">12:00:00 AM</span>
                 </div>
             </div>
         </div>
@@ -131,27 +131,18 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                 </div>
             </div>
 
-            <!-- analytics overview for yearly sales-->
             <div class="row-1-col-0">
-                <div class="row-1-item-1">
-                    <div class="group-items">
-                        <span id="year-color-represented"></span>
-                        <span id="year">2022</span>
+                <div class="main-wrapper">
+                    <div class="pie-chart">
+                        <canvas id="myChart"></canvas>
                     </div>
-
-                    <!-- put here the pie chart -->
-                    <div class="group-items">
-                        <div class="chart-wrapper">
-
-                        </div>
+                    <div class="pie-chart-reading">
+                        <h1>Yearly Sales</h1>
+                        <p id="pie-chart-reading-id">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ad provident libero quasi voluptates molestiae dolor aperiam expedita velit tenetur? Vitae dignissimos ipsum veniam inventore nemo rerum ea explicabo excepturi.
+                        Ex veniam illo architecto. Aperiam accusantium ipsum, quisquam hic voluptatibus fugit atque tenetur voluptatem nisi inventore repudiandae et nihil ipsa adipisci dicta quasi reiciendis ex laborum. Inventore, exercitationem omnis? Enim.</p>
                     </div>
                 </div>
-
-                <div class="row-1-item-1-col-1">
-                        <p>YEARLY SALES</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum velit error accusantium, nisi at animi ex sed deleniti recusandae impedit culpa ab fugiat quae tempora tenetur ad molestiae sint. Culpa.
-                        Odit eveniet obcaecati expedita rem adipisci commodi eius dolore architecto consequuntur assumenda ea aperiam magni consequatur doloremque tempore ipsum atque, in facilis? Quisquam, sint repudiandae. Necessitatibus, numquam? Fugiat, ipsa maxime.</p>
-                </div>
+                
             </div>
         </div>
     </div>

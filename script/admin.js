@@ -7,32 +7,29 @@ function showChart(){
     
     var xValues = [year1, year2];
     var yValues = [yearValue1, yearValue2, 0];
-    var barColors = ["green", "green"];
+    var barColors = ["#0D47A1","#2196F3"];
 
     new Chart("myChart", {
-        type: "bar",
+        type: "pie",
         data: {
-        labels: xValues,
-        datasets: [{
+          labels: xValues,
+          datasets: [{
             backgroundColor: barColors,
             data: yValues
-        }]
+          }]
         },
         options: {
-        legend: {display: false},
-        title: {
+          title: {
             display: true,
             text: "Yearly Sales"
+          }
         }
-        }
-    });
+      });
 }
 
 function loadItems(){
     
     showChart();
-    showDateTime();
-    setInterval(showDateTime, 1000);
     
 }
 
