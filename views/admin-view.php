@@ -130,7 +130,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                     <p class="title-report">Product Line</p>
                 </div>
             </div>
-
+            <span class="divider"></span>
             <div class="row-1-col-0">
                 <div class="main-wrapper">
                     <div class="pie-chart">

@@ -81,7 +81,7 @@
     /* set layout */
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: column;
     /* styling */
     background-color: var(--color-primary6);
@@ -312,8 +312,10 @@
     justify-content: space-evenly;
     /* styling */
     width: 100%;
-    margin: 5% 0;
+    margin: 5% 0 2% 0;
 }
+
+
 
 .row-0-col-0 > .group-items{
     /* set layout */
@@ -408,3 +410,8 @@
     margin: 5% auto;
 }
 
+.divider{
+    width: 80%;
+    padding: 1px;
+    background-color: var(--color-primary4);
+}
