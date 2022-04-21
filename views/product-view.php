@@ -23,156 +23,133 @@ session_start();
     <script src="../script/product-crud.js" defer></script>
 </head>
 <body>
-    <div id="main">
+    <div class="main">
+
+<!-- =========================================== HEADER SECTION ============================================================= -->
         <div class="header">
-            <div class="container-company-logo">
-                <p>company logo</p>
+            <div class="user-account-info">
+                <?php include '../images/undraw_male_avatar.svg';?>
+                <label for="user-account-name">Name:</label>
+                <p id="user-account-name">Ritche Laganson</p>
+                <label for="user-account-role">Role:</label>     
+                <p id="user-account-role">System Administrator</p>
             </div>
-            <div class="container-user-info">
-                <div class="user-info-wrapper">
-                    <label for="user">User:</label>
-                    <label id="user">Ritche Laganson</label><br>
-                    <label for="role">Role:</label>
-                    <label id="role">System Administrator</label>
-                </div>
-            </div>
-            <div class="button-container">
-                
-                <button id="logout-btn">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <span>Logout</span>
-                </button>
-            </div>
-           
-        </div>
-        <div class="sidebar">
-            <div class="sidebar-nav-container">
-                <div class="sidebar-grp-item">
-                    <a href="../views/admin-view.php">
-                        <span></span>
-                        <i class="fa-solid fa-gauge icon"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item active">
-                    <a href="../views/product-view.php">
-                        <span id="active"></span>
-                        <i class="fa-solid fa-cart-shopping icon"></i>
-                        <p>Product</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="../views/supplier-view.php">
-                        <span></span>
-                        <i class="fa-solid fa-truck icon"></i>
-                        <p>Supplier</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-user-group icon"></i>
-                        <p>Accounts</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-layer-group icon"></i>
-                        <p>Stocks</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-cash-register icon"></i>
-                        <p>POS</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-clipboard icon"></i>
-                        <p>Reports</p>
-                    </a>
-                </div>
-                <div class="sidebar-grp-item">
-                    <a href="">
-                        <span></span>
-                        <i class="fa-solid fa-sliders icon"></i>
-                        <p>Settings</p>
-                    </a>
+
+            <div class="date-time">
+                <div class="date-time-wrapper">
+                    <span id="time">Sunday, April 17, 2022</span><br>
+                    <span id="date">12:00:00 AM</span>
                 </div>
             </div>
         </div>
+<!-- =========================================== END OF HEADER SECTION ============================================================= -->
+
+<!-- =========================================== SIDE-BAR SECTION ============================================================= -->
+        <div class="side-bar">
+            <!-- system logo -->
+            <div class="logo-wrapper">
+                <img class="logo" src="../images/pos-logo.svg" alt="pos-logo">
+                <p>Point of Sale System</p>
+            </div>
+
+            <!-- navigation -->
+            <div class="side-bar-navigation">
+                <a class="sidebar-nav-group active" href="../views/admin-view.php">
+                    <?php include '../images/location-arrow-solid.svg';?>
+                    <?php include '../images/gauge-solid.svg';?>
+                    <p>Dashboard</p>
+                </a> 
+                <a class="sidebar-nav-group" href="../views/product-view.php">
+                    <?php include '../images/cart-shopping-solid.svg';?>
+                    <p>Product</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/truck-solid.svg';?>
+                    <p>Supplier</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/user-group-solid.svg';?>
+                    <p>Accounts</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/layer-group-solid.svg';?>
+                    <p>Stock</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/cash-register-solid.svg';?>
+                    <p>POS</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/clipboard-solid.svg';?>
+                    <p>Reports</p>
+                </a>
+                <a class="sidebar-nav-group" href="#">
+                    <?php include '../images/sliders-solid.svg';?>
+                    <p>Settings</p>
+                </a>
+            </div>
+
+            <!-- logout -->
+            <div class="side-bar-logout">
+                <a href="#" id="sidebar-logout-btn">
+                    <!-- icon logout -->
+                    <?php include '../images/power-off-solid.svg';?>
+                    <p>LOGOUT</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- =========================================== END OF SIDE-BAR SECTION ============================================================= -->
 
 
+        <!-- =========================================== CONTENT SECTION ============================================================= -->
         <div class="content">
-           <div class="content-header-container">
-                <h1>Product Information</h1>
-                <div class="date-container">
-                        <span id="idTime"></span>
-                        <span id="am_pm"></span>
-                        <span id="idDate"></span>
+            <div class="main-container">
+                <div class="row-0-col-0">
+                    <h1>PRODUCT INFORMATION</h1>
+                </div>
+                <div class="row-1-col-0">
+                    <div class="wrapper-button">
+                        <button>
+                            <?php include '../images/circle-plus-solid.svg'?>
+                            <p>INSERT</p>
+                        </button>
+                        <button>
+                            <?php include '../images/circle-plus-solid.svg'?>
+                            <p>INSERT CATEGORY</p>
+                        </button>
+                    </div>
+                    <div class="main-wrapper-searchtextfield">
+                        <div class="wrapper-searchtextfield">
+                            <?php include '../images/magnifying-glass-solid.svg';?>
+                            <input type="text" placeholder="Search Product">
+                        </div>
+                    </div>
+                </div>
+                <div class="row-2-col-0">
+                    <div class="result-wrapper">
+                        <label for="result">Results :</label>
+                        <span id="result">10</span>
+                    </div>
+                   
+                    <div class="wrapper-table">
+                        <table>
+                            <thead>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="wrapper-total-product">
+                        <label for="total-product">Total Products :</label>
+                        <span id="total-product">50</span>
+                    </div>
                 </div>
             </div>
             
-            <div class="content-maincontent-container">
-                <!-- PRODUCT DASHBOARD -->
-                <div class="product-entry-wrapper">
-                    <div class="product-entry-group">
-                        <i class="fa-solid fa-square-plus icon"></i>
-                        <button id="btnAddProduct" onclick="btnProductEntryClicked()">Product Entry</button>
-                    </div>
-                    <div class="product-entry-group">
-                        <i class="fa-solid fa-square-plus icon"></i>
-                        <button id="btnAddCategory" onclick="btnCategoryEntryClicked()">Category Entry</button>
-                    </div>
-                </div>
-                
-                <div class="product-search-wrapper">
-                    <div class="product-search-group">
-                        <i class="fa-solid fa-magnifying-glass icon"></i>
-                        <input type="text" id="product-search-input" placeholder="Search here" onkeyup="filterTable()">
-                    </div>
-                </div>
-                
-                <div id="product-table-wrapper" class="product-table-wrapper">
-                    <table id="product-table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Product ID</th>
-                                <th>Barcode</th>
-                                <th>Category</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Unit</th>
-                                <th>Price1</th>
-                                <th>Price2</th>
-                                <th>Price3</th>
-                                <th>Quantity</th>
-                                <th>Reorder Level</th>
-                                <th>Drawer No.</th>
-                                <th>Status</th>
-                                <th colspan="2">Action</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    <tbody id="myTableBody">
-                        
-                    </tbody>
-                    </table>            
-                </div>
-
-            <!-- END OF PRODUCT DASHBOARD -->
-
-            <!-- INSERT PRODUCT SECTION -->
-            <?php include '../views/product-entry-view.php';?>
-            <!-- END OF INSERT PRODUCT SECTION -->
-            <?php include '../views/product-category-view.php';?>
-            </div>
-               
         </div>
     </div>
 </body>
