@@ -135,10 +135,35 @@ session_start();
                     <div class="wrapper-table">
                         <table>
                             <thead>
-                                <th></th>
+                                <th>sample</th>
+                                <th>sample</th>
+                                <th>sample</th>
                             </thead>
                             <tbody>
-                                
+                                <tr>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                </tr>
+                                <tr>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                </tr>
+                                <tr>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                </tr><tr>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                </tr>
+                                <tr>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                    <td>celldata</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

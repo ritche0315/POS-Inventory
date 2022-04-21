@@ -309,7 +309,8 @@
     width: 90%;
     margin-top: 2%;
     margin-bottom: 2%;
-    border: solid 1px;
+    box-shadow: 0 1px 12px 0 rgb(0,0,0,0.5);
+    background-color: var(--color-primary1);
 }
 /* first row */
 
@@ -328,11 +329,13 @@
 /* second row */
 .row-1-col-0{
      display: flex;
+     /* styling */
+     margin: 4% auto 0 auto;
+     width: 90%;
 }
 /* button */
 .row-1-col-0 > .wrapper-button{
     display: flex;
-    border: solid 1px green;
     width: 50%;
     
 }
@@ -351,7 +354,7 @@
     justify-content: center;
 
     /* styling */
-    width: 100%;
+    width: 200px;
     padding: 5px;
     margin: 10px;
     background-color: var(--color-primary2);
@@ -367,7 +370,6 @@
     display: flex;
     align-items: center;
     /* styling */
-    border:solid 1px red;
     width: 50%;
 }
 
@@ -377,9 +379,11 @@
     align-items: center;
     /* styling */
     border: solid 1px var(--color-primary4);
+    border-radius: 10px;
     width: 100%;
     margin: 10px;
     box-shadow: 0 1px 5px 0 rgb(0,0,0,0.5);
+    background-color: var(--color-primary6);
 } 
 
 .row-1-col-0 > .main-wrapper-searchtextfield > .wrapper-searchtextfield > svg{
@@ -399,31 +403,47 @@
 
 /* 3rd row */
 .row-2-col-0{
-
+    display: block;
+    margin: 2% auto 0 auto;
 }
 /* result */
 .row-2-col-0 > .result-wrapper{
     /* styling */
-    border: solid 1px green;
     width: 90%;
     margin: 10px auto;
+    font-size: 1.3rem;
 }
 
 /*  table */
 .row-2-col-0 > .wrapper-table{
     /* styling */
-    border: solid 1px red;
     width: 90%;
-    margin: 0 auto;
+    margin: 10px auto;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    border-bottom: solid 2px var(--color-primary2);      
+    box-shadow: 0 1px 12px 0 rgb(0,0,0,0.3);
 }
-
-.row-2-col-0 > .wrapper-table > table, th, td{
-    border-bottom: solid 1px;
+.row-2-col-0 > .wrapper-table > table{
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;          
 }
-
+.row-2-col-0 > .wrapper-table > table > thead{
+  background-color: var(--color-hover);
+  height: 30px;
+}
+.row-2-col-0 > .wrapper-table > table > tbody > tr:hover{
+    background-color: var(--color-primary4);
+}
 /* total product */
 .row-2-col-0 > .wrapper-total-product{
-    /* stuling */
-    border: solid 1px violet;
+    /* styling */
+    width: 90%;
+    margin: 5% auto 0 auto;
+    font-size: 2rem;
 }
+
 
