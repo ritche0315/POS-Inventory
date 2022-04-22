@@ -46,6 +46,10 @@ session_start();
 
 <!-- =========================================== SIDE-BAR SECTION ============================================================= -->
         <div class="side-bar">
+            <!-- toggle show/hide -->
+            <div class="toggle-wrapper">
+                <button class="toggle-button">hide</button>
+            </div>
             <!-- system logo -->
             <div class="logo-wrapper">
                 <img class="logo" src="../images/pos-logo.svg" alt="pos-logo">
@@ -133,37 +137,11 @@ session_start();
                     </div>
                    
                     <div class="wrapper-table">
-                        <table>
-                            <thead>
-                                <th>sample</th>
-                                <th>sample</th>
-                                <th>sample</th>
+                        <table class="product-table">
+                            <thead class="product-table-thead">
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                </tr>
-                                <tr>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                </tr>
-                                <tr>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                </tr><tr>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                </tr>
-                                <tr>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                    <td>celldata</td>
-                                </tr>
+                            <tbody class="product-table-tbody">
+                              
                             </tbody>
                         </table>
                     </div>

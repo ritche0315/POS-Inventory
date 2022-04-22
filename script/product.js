@@ -291,106 +291,67 @@ function displayProducts() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       const server_response = JSON.parse(this.responseText);
       console.log(server_response);
-      populateTableProduct(server_response);
+      populateTable(server_response);
     }
   }
 
-  var tableEl = document.getElementById("product-table");
-  var tbodyEl = document.getElementById("myTableBody");
+  var tableEl = document.getElementsByClassName("product-table")[0];
+  var tbody = document.getElementsByClassName("product-table-tbody")[0];
+  var thead = document.getElementsByClassName("product-table-thead")[0];
 
+  function populateTable(serverResponse) {
 
-  function populateTableProduct(data) {
-    var counts = 1;
-    for (obj in data) {
-
-
-      const tr = document.createElement("tr");
-      const seq = document.createElement("td");
-      const prod_id = document.createElement("td");
-      const prod_barcode = document.createElement("td");
-      const prod_cat = document.createElement("td");
-      const prod_name = document.createElement("td");
-      const prod_desc = document.createElement("td");
-      const prod_unit = document.createElement("td");
-      const prod_p1 = document.createElement("td");
-      const prod_p2 = document.createElement("td");
-      const prod_p3 = document.createElement("td");
-      const prod_qty = document.createElement("td");
-      const prod_reorder_lvl = document.createElement("td");
-      const prod_drawer_no = document.createElement("td");
-      const prod_status = document.createElement("td");
-      const editCol = document.createElement("td");
-      const delCol = document.createElement("td");
-      const btnDelete = document.createElement("button");
-      const btnEdit = document.createElement("button");
-
-      const iconEdit = document.createElement("i");
-      const textEdit = document.createElement("p");
-      const textDelete = document.createElement("p");
-      const iconDelete = document.createElement("i");
-
-
-      // setAttributes
-      iconDelete.className = "fa-solid fa-trash-can icon deleteGroup";
-      btnDelete.className = "btnDelete deleteGroup";
-      textDelete.className = "deleteGroup";
-      btnEdit.className = "btnEdit editGroup";
-      iconEdit.className = "fa-solid fa-pen-to-square icon editGroup";
-      textEdit.className = "editGroup";
-      //textContent
-      textEdit.textContent = "EDIT";
-      textDelete.textContent = "DELETE";
-
-      seq.textContent = counts;
-      prod_id.textContent = data[obj].prod_id;
-      prod_barcode.textContent = data[obj].prod_barcode;
-      prod_cat.textContent = data[obj].prod_category;
-      prod_name.textContent = data[obj].prod_name;
-      prod_desc.textContent = data[obj].prod_desc;
-      prod_unit.textContent = data[obj].prod_unit;
-      prod_p1.textContent = data[obj].prod_price1;
-      prod_p2.textContent = data[obj].prod_price2;
-      prod_p3.textContent = data[obj].prod_price3;
-      prod_qty.textContent = data[obj].prod_qty;
-      prod_reorder_lvl.textContent = data[obj].prod_reorder_lvl;
-      prod_drawer_no.textContent = data[obj].prod_drawer_No;
-      prod_status.textContent = data[obj].prod_status;
-
-
-      //appends
-      tr.appendChild(seq);
-      tr.appendChild(prod_id);
-      tr.appendChild(prod_barcode);
-      tr.appendChild(prod_cat);
-      tr.appendChild(prod_name);
-      tr.appendChild(prod_desc);
-      tr.appendChild(prod_unit);
-      tr.appendChild(prod_p1);
-      tr.appendChild(prod_p2);
-      tr.appendChild(prod_p3);
-      tr.appendChild(prod_qty);
-      tr.appendChild(prod_reorder_lvl);
-      tr.appendChild(prod_drawer_no);
-      tr.appendChild(prod_status);
-
-      btnEdit.appendChild(iconEdit);
-      btnEdit.appendChild(textEdit);
-      editCol.appendChild(btnEdit);
-      tr.appendChild(editCol);
-      btnDelete.appendChild(iconDelete);
-      btnDelete.appendChild(textDelete);
-      delCol.appendChild(btnDelete);
-      tr.appendChild(delCol);
-
-      counts++;
-      tbodyEl.appendChild(tr);
-
-    }
-
-
-
-
-    tableEl.addEventListener("click", actionColumn);
+      let rowCount = 1;
+  
+  
+      // get column names
+      helperAppendElement(thead, helperCreateElement("th", "#"));
+      let tableColumns = Object.keys(serverResponse[0])
+  
+      for (let i = 0; i < tableColumns.length; i++) {
+  
+          helperAppendElement(thead, helperCreateElement("th", tableColumns[i]));
+      }
+  
+      
+  
+      // get each row data
+  
+      for (let data in serverResponse) {
+  
+          var tr = helperCreateElement("tr");
+          helperAppendElement(tr, helperCreateElement("td", rowCount));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_id));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_barcode));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_category));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_name));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_desc));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_unit));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_price1));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_price2));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_price3));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_qty));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_reorder_lvl));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_drawer_No));
+          helperAppendElement(tr, helperCreateElement("td", serverResponse[data].prod_status));
+  
+  
+          rowCount++;
+          tbody.appendChild(tr);
+      }
+      
+      tableEl.addEventListener("click", actionColumn);
+  }
+  
+  
+  function helperCreateElement(el, textcontent) {
+      let elcreated = document.createElement(el);
+      elcreated.textContent = textcontent;
+      return elcreated;
+  }
+  
+  function helperAppendElement(appendTo, child){
+      appendTo.appendChild(child);
   }
 
   function actionColumn(e) {

@@ -311,6 +311,7 @@
     margin-bottom: 2%;
     box-shadow: 0 1px 12px 0 rgb(0,0,0,0.5);
     background-color: var(--color-primary1);
+    overflow: auto;
 }
 /* first row */
 
@@ -320,6 +321,9 @@
     width: 100%;
     padding: 20px 20px;
     background-color: var(--color-hover);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 .row-0-col-0 > h1{
     letter-spacing: 1px;
@@ -420,21 +424,27 @@
     width: 90%;
     margin: 10px auto;
     border-radius: 10px 10px 0 0;
-    overflow: hidden;
-    border-bottom: solid 2px var(--color-primary2);      
+    overflow-x: auto;
+    overflow-y: auto;  
     box-shadow: 0 1px 12px 0 rgb(0,0,0,0.3);
 }
 .row-2-col-0 > .wrapper-table > table{
     border-collapse: collapse;
     table-layout: auto;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: auto;          
+    width: 100%;    
 }
 .row-2-col-0 > .wrapper-table > table > thead{
   background-color: var(--color-hover);
   height: 30px;
 }
+
+.row-2-col-0 > .wrapper-table > table > thead > th{
+    padding: 0 20px 0 20px;
+}
+
+.row-2-col-0 > .wrapper-table > table > tbody > tr:last-child{
+    border-bottom: solid 2px var(--color-primary2);
+}    
 .row-2-col-0 > .wrapper-table > table > tbody > tr:hover{
     background-color: var(--color-primary4);
 }

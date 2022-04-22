@@ -48,10 +48,32 @@ function logoutClicked(){
 }
 
 
+function toggleHideShow(){
+    
+    let toggleButton = document.getElementsByClassName("toggle-button")[0];
+    toggleButton.addEventListener("click", ()=>{
+        hide();
+    });
+}
+
+function hide(){
+    let main = document.getElementsByClassName("main")[0];
+    main.style.gridTemplateColumns = "100px 2fr";
+
+    let sideBar = document.getElementsByClassName("side-bar")[0];
+
+    sideBar.style.overflow = "hidden";
+
+    let elWrapper = document.createElement("div");
+    elWrapper.style.backgroundColor = "green";
+    elWrapper.style.gridArea = "area-side-bar";
+    sideBar.appendChild(elWrapper);
+}
 
 function loadItems(){
     setInterval(getDateTimeNow, 1000);
     logoutClicked();
+    toggleHideShow();
 }
 
 window.addEventListener("load", loadItems);
