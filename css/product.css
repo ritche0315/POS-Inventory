@@ -457,3 +457,18 @@
 }
 
 
+/* table delete and edit button */
+
+.edit-button{
+    color: #ffb700;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.delete-button{
+    color: var(--color-primary7);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
