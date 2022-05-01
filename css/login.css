@@ -1,14 +1,13 @@
 :root{
     /* primary colors */
-    --color1:#DEE2E6;
-    --color2:#1565C0;
-    --color3:#2196F3;
-    --color4:#ffffff;
-    --color5:#ADB5BD;
-    --color6:#6C757D;
+    --primary-color1: #1565c0;
+    --primary-color2: #F5F5F5;
+    --primary-color3: #78909C;
+    --primary-color4: #546E7A;
+    --primary-color5: #CFD8DC;
     
-    /* hover colors*/
-    --colorHover1:#1E88E5;
+    --gradient-color1: linear-gradient(180deg, #3D84CD 0%, #AAD8F1 100%);
+
     font-size: 12px;
     font-family: 'Roboto', sans-serif;
 }
@@ -19,23 +18,11 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-.logo{
-    width: 100px;
-    height: 100px;
-}
-.icon-wrapper{
-    width: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.icon{
-    width: 32px;
+.group-form-textfield > svg{
+    width: 24px;
     height: auto;
-    margin: 0 auto;
-    padding: 5px;
-    image-rendering: var(--color1);
+    margin: 5px;
+    fill: var(--primary-color5);
 }
 
 .group-form-textfield{
@@ -44,7 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 1px var(--color5);
+    border: solid 0.3px var(--primary-color5);
     margin: 5px auto;
 }
 
@@ -79,32 +66,34 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    background: linear-gradient(180deg, #1976D2 0%, rgba(33, 150, 243, 0) 100%);
+    align-items: center;
+    background: var(--gradient-color1);
 }
 
 form{
     background-color: #fff;
-    border-top: solid 15px var(--color2); 
+    border-top: solid 15px var(--primary-color1); 
     border-radius: 10px;
-    width: 380px;
-    height: 400px;
+    width: 360px;
+    max-width: 360px;
+    height: auto;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 150px 0 0 0;
     box-shadow:  0 1px 12px 0 rgb(0,0,0,0.2);
 }   
 
 #submit-button{
     width: 120px;
-    background-color: var(--color3);
+    background-color: var(--primary-color1);
     cursor: pointer;
-    color: var(--color4);
+    color: #fff;
     border-radius: 5px;
     padding: 10px 5px 10px 5px;
     border: none;
+    letter-spacing: 2px;
 }
 
 #submit-button:hover{
@@ -114,4 +103,26 @@ form{
 ::placeholder{
     font-style: italic;
     color: gray;
+}
+
+
+.group-form-items > h1{
+    color: var(--primary-color3);
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+
+.successError{
+    animation: transitionIn 1s;
+}
+
+@keyframes animationSuccessError {
+    from {
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
 }

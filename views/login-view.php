@@ -19,25 +19,25 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Valid"){
     <div class="main">
         <form onsubmit="return false">
             <div class="group-form-items">
-                <img class="logo" src="../images/pos-logo.svg" alt="pos-logo">
+                <h1>Login</h1>
             </div>
+
             <div class="group-form-items">
                 <div class="group-form-textfield">
-                    <span class="icon-wrapper">
-                        <img class="icon" src="../images/user-icon.svg" alt="user-icon">
-                    </span>
+                    <?php include '../images/user-icon.svg'?>
                     <input type="text" id="username-textfield" placeholder="USERNAME" autocomplete="off">
                 </div>
                 <div class="group-form-textfield">
-                    <span class="icon-wrapper">
-                        <img class="icon" src="../images/key-icon.svg" alt="key-icon">
-                    </span>
+                    <?php include '../images/key-icon.svg'?>
                     <input type="password" id="password-textfield" placeholder="PASSWORD" autocomplete="off">
                 </div>
                
             </div>
             <div class="group-form-items">
                 <input type="button" value="Login" id="submit-button">
+            </div>
+            <div class="successError">
+                
             </div>
         </form>
     </div>

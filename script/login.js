@@ -6,10 +6,12 @@ window.addEventListener("load", init);
 const username_data = document.getElementById("username-textfield");
 const password_data = document.getElementById("password-textfield");
 const loginButton = document.getElementById("submit-button");
+const formEl = document.querySelector(".main > form");
+
 function init(){
     loginButton.addEventListener("click", () => {
         if(loginValidate() != ""){
-            alert(loginValidate());
+            displayError(loginValidate());
         }else{
             login();
         }
@@ -26,10 +28,19 @@ function login(){
         if(xhr.readyState == 4 && xhr.status == 200){
             let serverResponse = JSON.parse(xhr.response);
             if(serverResponse.isExist === 1){
-                alert("Welcome "+serverResponse.user);
-                window.location.href = "../views/admin-view.php";
+                
+                setTimeout(()=>{
+                    window.location.href = "../views/admin-view.php";
+                }, 3000)
+                
+                var count = 1;
+                setInterval(()=>{
+                    var succesStr = "Successfully Login!"+"\n"+"Welcome "+serverResponse.user+"\n"+"Logging in "+count;
+                    successLogin(succesStr);
+                    count++;
+                }, 1000)
             }else{
-                alert("Incorrect Username or Password");
+                displayError("Incorrect Username or Password");
             }
 
         }else{
@@ -68,4 +79,29 @@ function loginValidate(){
     }
     
    return str;
+}
+function successLogin(successMessage){
+    const successError = document.querySelector(".successError");
+    successError.textContent = successMessage;
+    // styling
+    successError.style.backgroundColor = "#69F0AE";
+    successError.style.margin = "10px";
+    successError.style.border = "solid 2px #00E676";
+    successError.style.padding = "5px";
+    successError.style.textAlign = "center";
+    successError.style.whiteSpace = "pre-line";
+    successError.style.animation = "animationSuccessError 0.3s";
+}
+
+function displayError(errorMessage){
+    const successError = document.querySelector(".successError");
+    successError.textContent = errorMessage;
+    // styling
+    successError.style.backgroundColor = "#FFCDD2";
+    successError.style.margin = "10px";
+    successError.style.border = "solid 2px #EF5350";
+    successError.style.padding = "5px";
+    successError.style.textAlign = "center";
+    successError.style.whiteSpace = "pre-line";
+    successError.style.animation = "animationSuccessError 0.3s";
 }

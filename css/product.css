@@ -306,12 +306,11 @@
 /* main container */
 .content > .main-container{
     height: 100vh;
-    width: 90%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    max-width: 90%;
     box-shadow: 0 1px 12px 0 rgb(0,0,0,0.5);
     background-color: var(--color-primary1);
     overflow: auto;
+    margin: 2% 0;
 }
 /* first row */
 
@@ -333,15 +332,15 @@
 /* second row */
 .row-1-col-0{
      display: flex;
+     flex-wrap: wrap;
      /* styling */
-     margin: 4% auto 0 auto;
+     margin: 4% auto 4% auto;
      width: 90%;
 }
 /* button */
 .row-1-col-0 > .wrapper-button{
     display: flex;
     width: 50%;
-    
 }
 
 .row-1-col-0 > .wrapper-button > button > svg{
@@ -388,6 +387,7 @@
     margin: 10px;
     box-shadow: 0 1px 5px 0 rgb(0,0,0,0.5);
     background-color: var(--color-primary6);
+    
 } 
 
 .row-1-col-0 > .main-wrapper-searchtextfield > .wrapper-searchtextfield > svg{
@@ -421,17 +421,14 @@
 /*  table */
 .row-2-col-0 > .wrapper-table{
     /* styling */
-    width: 90%;
     margin: 10px auto;
     border-radius: 10px 10px 0 0;
-    overflow-x: auto;
-    overflow-y: auto;  
     box-shadow: 0 1px 12px 0 rgb(0,0,0,0.3);
 }
 .row-2-col-0 > .wrapper-table > table{
     border-collapse: collapse;
     table-layout: auto;
-    width: 100%;    
+    width: 100%; 
 }
 .row-2-col-0 > .wrapper-table > table > thead{
   background-color: var(--color-hover);
