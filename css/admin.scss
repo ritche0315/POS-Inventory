@@ -1,0 +1,107 @@
+
+    $primaryColor1: #1565c0;
+    $primaryColor2: #F5F5F5;
+    $primaryColor3: #78909C;
+    $primaryColor4: #546E7A;
+    $primaryColor5: #CFD8DC;
+    
+    $gradientColor1: linear-gradient(180deg, #3D84CD 0%, #AAD8F1 100%);
+
+    $textFontSize: 8px;
+    $iconFontSize: 24px;
+
+*{
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: $textFontSize;
+    text-decoration: none;
+
+}
+
+.main{
+    .header{
+        background-color: $primaryColor1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .system-logo {
+            flex-basis: 15%;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                width: 160px;
+                height: auto;
+                fill: white;
+            }
+            
+        }
+
+        .icon{
+            color: white;
+        }
+        .wrapper-fa-bars{
+            padding: 10px;
+            .icon{
+                font-size: $iconFontSize;
+            }
+        }
+
+        .logged-In{
+            flex: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 10px 0 10px 10px;
+            color: white;
+            :nth-child(1){
+                font-weight: 600;
+                font-size: 1.7em;
+                margin-right: 10px;
+            }
+            :nth-child(2){
+                margin-right: 5px;
+                font-size: 1.7em;
+            }
+            :nth-child(3){
+                font-size: 1.7em;
+            }
+            :nth-child(5){
+                margin-right: 5px;
+                font-size: 1.7em;
+            }
+            :nth-child(6){
+                font-size: 1.7em;
+            }
+
+            
+            .divider{
+                width: 2px;
+                background-color: white;
+                height: 2.5em;
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+        }
+
+        
+        .logout{
+            flex-basis: 2%;
+            padding: 5px 10px 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            :nth-child(1){
+                font-size: $iconFontSize;
+                color: white;
+            }
+        }
+    }
+}
+
+

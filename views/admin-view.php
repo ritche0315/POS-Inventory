@@ -15,136 +15,70 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
     <title>Admin Page</title>
     <script src="../script/admin.js" defer></script>
     <script src="../script/all.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 <body>
-    <div class="main">
-
-<!-- =========================================== HEADER SECTION ============================================================= -->
+   <div class="main">
         <div class="header">
-            <div class="user-account-info">
-                <?php include '../images/undraw_male_avatar.svg';?>
-                <label for="user-account-name">Name:</label>
-                <p id="user-account-name">Ritche Laganson</p>
-                <label for="user-account-role">Role:</label>     
-                <p id="user-account-role">System Administrator</p>
+            <div class="system-logo">
+                <?php include '../images/system-logo.svg';?>
             </div>
-
-            <div class="date-time">
-                <div class="date-time-wrapper">
-                    <span id="time">Sunday, April 17, 2022</span><br>
-                    <span id="date">12:00:00 AM</span>
-                </div>
+            <div class="wrapper-fa-bars">
+                <i class="fa-solid fa-bars icon"></i>
+            </div>
+            <div class="logged-In">
+                <p>Logged in:</p>
+                <label for="user-login">User:</label>
+                <p id="user-login">Ritche D. Laganson</p>
+                <span class="divider"></span>
+                <label for="user-role">Role:</label>
+                <p id="user-role">Admin</p>
+                <span class="divider"></span>
+            </div>
+            <div class="logout">
+                <i class="fa-solid fa-power-off"></i>
             </div>
         </div>
-<!-- =========================================== END OF HEADER SECTION ============================================================= -->
 
-<!-- =========================================== SIDE-BAR SECTION ============================================================= -->
-        <div class="side-bar">
-            <!-- system logo -->
-            <div class="logo-wrapper">
-                <img class="logo" src="../images/pos-logo.svg" alt="pos-logo">
-                <p>Point of Sale System</p>
-            </div>
+        <div class="main-content"
+            
+        </div>
 
-            <!-- navigation -->
-            <div class="side-bar-navigation">
-                <a class="sidebar-nav-group active" href="#">
-                    <?php include '../images/location-arrow-solid.svg';?>
-                    <?php include '../images/gauge-solid.svg';?>
+        <div class="sideBar">
+            <p>Menu</p>
+            <div class="navigation">
+                <button>
+                    <i class="fa-solid fa-gauge"></i>
                     <p>Dashboard</p>
-                </a> 
-                <a class="sidebar-nav-group" href="#">
-                    <?php include '../images/cart-shopping-solid.svg';?>
+                </button>
+                <button>
+                    <i class="fa-solid fa-cart-shopping"></i>
                     <p>Product</p>
-                </a>
-                <a class="sidebar-nav-group" href="#">
-                    <?php include '../images/truck-solid.svg';?>
+                </button>
+                <button>
+                    <i class="fa-solid fa-truck"></i>
                     <p>Supplier</p>
-                </a>
-                <a class="sidebar-nav-group" href="#">
-                    <?php include '../images/user-group-solid.svg';?>
-                    <p>Accounts</p>
-                </a>
-                <a class="sidebar-nav-group" href="#">
-                    <?php include '../images/layer-group-solid.svg';?>
+                </button>
+                <button>
+                    <i class="fa-solid fa-boxes-stacked"></i>
                     <p>Stock</p>
-                </a>
-                <a class="sidebar-nav-group" href="#">
-                    <?php include '../images/cash-register-solid.svg';?>
+                </button>
+                <button>
+                    <i class="fa-solid fa-user-group"></i>
+                    <p>User Accounts</p>
+                </button>
+                <button>
+                    <i class="fa-solid fa-cash-register"></i>
                     <p>POS</p>
-                </a>
-                <a class="sidebar-nav-group" href="#">
-                    <?php include '../images/clipboard-solid.svg';?>
+                </button>
+                <button>
+                    <i class="fa-solid fa-clipboard"></i>
                     <p>Reports</p>
-                </a>
-                <a class="sidebar-nav-group" href="#">
-                    <?php include '../images/sliders-solid.svg';?>
-                    <p>Settings</p>
-                </a>
-            </div>
-
-            <!-- logout -->
-            <div class="side-bar-logout">
-                <a href="#" id="sidebar-logout-btn">
-                    <!-- icon logout -->
-                    <?php include '../images/power-off-solid.svg';?>
-                    <p>LOGOUT</p>
-                </a>
+                </button>
             </div>
         </div>
+        <div class="footer">
 
-        <!-- =========================================== END OF SIDE-BAR SECTION ============================================================= -->
-
-
-        <!-- =========================================== CONTENT SECTION ============================================================= -->
-        <div class="content">
-            <!-- analytics overview for daily, stock-on-hand, critical stocks, product line-->
-            <div class="row-0-col-0">
-                <div class="group-items" id="daily-sales">
-                    <span class="icon-wrapper">
-                        <?php include '../images/peso-sign-solid.svg';?>
-                    </span>
-                    <p class="val">2000</p>
-                    <p class="title-report">Daily Sales</p>
-                </div>
-                <div class="group-items" id="stock-on-hand">
-                    <span class="icon-wrapper">
-                        <?php include '../images/cart-shopping-solid.svg';?>
-                    </span>
-                    <p class="val">2000</p>
-                    <p class="title-report">Stock on hand</p>
-                </div>
-                <div class="group-items" id="critical-stocks">
-                    <span class="icon-wrapper">
-                        <?php include '../images/arrow-trend-down-solid.svg';?>
-                    </span>
-                    <p class="val">2000</p>
-                    <p class="title-report">Critical Stocks</p>
-                </div>
-                <div class="group-items" id="product-line">
-                    <span class="icon-wrapper">
-                        <?php include '../images/cubes-solid.svg';?>
-                    </span>
-                    <p class="val">2000</p>
-                    <p class="title-report">Product Line</p>
-                </div>
-            </div>
-            <span class="divider"></span>
-            <div class="row-1-col-0">
-                <div class="main-wrapper">
-                    <div class="pie-chart">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    <div class="pie-chart-reading">
-                        <h1>Yearly Sales</h1>
-                        <p id="pie-chart-reading-id">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ad provident libero quasi voluptates molestiae dolor aperiam expedita velit tenetur? Vitae dignissimos ipsum veniam inventore nemo rerum ea explicabo excepturi.
-                        Ex veniam illo architecto. Aperiam accusantium ipsum, quisquam hic voluptatibus fugit atque tenetur voluptatem nisi inventore repudiandae et nihil ipsa adipisci dicta quasi reiciendis ex laborum. Inventore, exercitationem omnis? Enim.</p>
-                    </div>
-                </div>
-                
-            </div>
         </div>
-    </div>
+   </div>
 </body>
 </html>
