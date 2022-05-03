@@ -19,12 +19,8 @@
     font-family: 'Roboto', sans-serif;
     font-size: $textFontSize;
     text-decoration: none;
-
 }
 
-body{
-    
-}
 
 .main{
     .header{
@@ -114,33 +110,27 @@ body{
     .container-sideBar-mainContent{
         display: flex;
         .sideBar{
-            display: flex;
-            flex-direction: column;
+            z-index:2;
+            flex-basis: 15%;
             background: $gradientColor1;
-            height: 100vh;
-            position:fixed;
-            left:0;
-            top:0;
-            z-index: -1;
-            min-width: 10%;
-            width: 15%;
+            height: calc(100vh - 10vh);
             .menu-title{
-                margin:50% 0 5% 5%;
+                margin:5% 0 5% 5%;
                 font-size: 1.2em;
                 color: white;
             }
             .navigation{
                 display: flex;
                 flex-direction: column;
-                height: 100%;
-                width: 100%;
+                overflow-y: auto;
+                height: calc(100% - 30%);
                 button{
                     display: flex;
                     align-items: center;
                     padding: 5px;
                     background-color: transparent;
                     border: none;
-                    margin: 2em 0 2em 0;
+                    margin: 1em 0 1em 0;
                     cursor: pointer;
                 }
                 span{
@@ -158,22 +148,7 @@ body{
                 }
             }
             
-            .time-container{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 10px;
-                .icon{
-                    font-size: $iconFontSize;
-                    color: $primaryColor1;
-                    margin-right: 10px;
-                }
-                #time{
-
-                    font-size: 1.8em;
-                    color: $primaryColor1;
-                }
-            }
+            
         }
         
     }
@@ -182,19 +157,8 @@ body{
 .main {
     .container-sideBar-mainContent{
         .main-content{
-            z-index: -2;
-            flex-basis: 100%;
+            flex-basis: 85%;
             background-color: green;
-            height: 100vh;
-            position: relative;
-
-            .demo-content{
-                border: solid 2px pink;
-                height: 500px;
-                position: absolute;
-                right: 0;
-                width: 85%;
-            }
         }
     }
 }
@@ -203,19 +167,22 @@ body{
 
 .main {
     .footer{
+        z-index: 1;
         background-color: $primaryColor1;
         width: 100%;
-        z-index: -2;
-        position: fixed;
-        left: 0;
-        bottom: 0;
         padding: 10px;
-        
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        display: flex;
         .wrapper{
+            flex-basis: 75%;
             display: flex;
             align-items: center;
-            margin-left: 15%;
-            justify-content: center;
+            justify-content: flex-start;
+            margin-left: 15.5%;
             svg{
                 width: 1.5em;
                 fill: white;
@@ -226,6 +193,23 @@ body{
                 font-size: 1.5em;
                 color: white;
                 margin-right: 5px;
+            }
+        }
+
+        .time-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            .icon{
+                font-size: $iconFontSize;
+                color: white;
+                margin-right: 10px;
+            }
+            #time{
+
+                font-size: 1.8em;
+                color: white;
             }
         }
     }

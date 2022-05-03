@@ -71,12 +71,13 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                         <span><i class="fa-solid fa-clipboard icon"></i></span>
                         <p>Reports</p>
                     </button>
+                    <button>
+                        <span><i class="fa-solid fa-clipboard icon"></i></span>
+                        <p>Settings</p>
+                    </button>
                 </div>
 
-                <div class="time-container">
-                    <i class="fa-solid fa-clock icon"></i>
-                    <span id="time"></span>
-                </div>
+               
             </div>
 
             
@@ -92,6 +93,11 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                 <?php include '../images/copyright-svgrepo-com.svg'?>
                 <p id="copyright">Ritche Inc.</p>
                 <p>Blizzard POS System</p>
+            </div>
+
+            <div class="time-container">
+                    <i class="fa-solid fa-clock icon"></i>
+                    <span id="time"></span>
             </div>
         </div>
    </div>
