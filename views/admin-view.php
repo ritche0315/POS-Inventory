@@ -39,45 +39,60 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
             </div>
         </div>
 
-        <div class="main-content"
-            
-        </div>
+        <div class="container-sideBar-mainContent">
+            <div class="sideBar">
+                <p class="menu-title">Menu</p>
+                <div class="navigation">
+                    <button>
+                        <span><i class="fa-solid fa-gauge icon"></i></span>
+                        <p>Dashboard</p>
+                    </button>
+                    <button>
+                        <span><i class="fa-solid fa-cart-shopping icon"></i></span>
+                        <p>Product</p>
+                    </button>
+                    <button>
+                        <span><i class="fa-solid fa-truck icon"></i></span>
+                        <p>Supplier</p>
+                    </button>
+                    <button>
+                        <span><i class="fa-solid fa-boxes-stacked icon"></i></span>
+                        <p>Stock</p>
+                    </button>
+                    <button>
+                        <span><i class="fa-solid fa-user-group icon"></i></span>
+                        <p>User Accounts</p>
+                    </button>
+                    <button>
+                        <span><i class="fa-solid fa-cash-register icon"></i></span>
+                        <p>POS</p>
+                    </button>
+                    <button>
+                        <span><i class="fa-solid fa-clipboard icon"></i></span>
+                        <p>Reports</p>
+                    </button>
+                </div>
 
-        <div class="sideBar">
-            <p>Menu</p>
-            <div class="navigation">
-                <button>
-                    <i class="fa-solid fa-gauge"></i>
-                    <p>Dashboard</p>
-                </button>
-                <button>
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <p>Product</p>
-                </button>
-                <button>
-                    <i class="fa-solid fa-truck"></i>
-                    <p>Supplier</p>
-                </button>
-                <button>
-                    <i class="fa-solid fa-boxes-stacked"></i>
-                    <p>Stock</p>
-                </button>
-                <button>
-                    <i class="fa-solid fa-user-group"></i>
-                    <p>User Accounts</p>
-                </button>
-                <button>
-                    <i class="fa-solid fa-cash-register"></i>
-                    <p>POS</p>
-                </button>
-                <button>
-                    <i class="fa-solid fa-clipboard"></i>
-                    <p>Reports</p>
-                </button>
+                <div class="time-container">
+                    <i class="fa-solid fa-clock icon"></i>
+                    <span id="time"></span>
+                </div>
+            </div>
+
+            
+            <div class="main-content">
+                <div class="demo-content">
+
+                </div>
             </div>
         </div>
+      
         <div class="footer">
-
+            <div class="wrapper">
+                <?php include '../images/copyright-svgrepo-com.svg'?>
+                <p id="copyright">Ritche Inc.</p>
+                <p>Blizzard POS System</p>
+            </div>
         </div>
    </div>
 </body>

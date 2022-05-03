@@ -8,7 +8,7 @@
     $gradientColor1: linear-gradient(180deg, #3D84CD 0%, #AAD8F1 100%);
 
     $textFontSize: 8px;
-    $iconFontSize: 24px;
+    $iconFontSize: 15px;
 
 *{
 
@@ -22,12 +22,18 @@
 
 }
 
+body{
+    
+}
+
 .main{
     .header{
         background-color: $primaryColor1;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        position: sticky;
+        top: 0;
         .system-logo {
             flex-basis: 15%;
             padding: 10px;
@@ -104,4 +110,126 @@
     }
 }
 
+.main {
+    .container-sideBar-mainContent{
+        display: flex;
+        .sideBar{
+            display: flex;
+            flex-direction: column;
+            background: $gradientColor1;
+            height: 100vh;
+            position:fixed;
+            left:0;
+            top:0;
+            z-index: -1;
+            min-width: 10%;
+            width: 15%;
+            .menu-title{
+                margin:50% 0 5% 5%;
+                font-size: 1.2em;
+                color: white;
+            }
+            .navigation{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 100%;
+                button{
+                    display: flex;
+                    align-items: center;
+                    padding: 5px;
+                    background-color: transparent;
+                    border: none;
+                    margin: 2em 0 2em 0;
+                    cursor: pointer;
+                }
+                span{
+                    width: 32px;
+                    margin-left: 10%;
+                }
+                p{
+                    font-size: 1.7em;
+                    color: white;
+                }
+                
+                .icon{
+                    font-size: $iconFontSize;
+                    color: white;
+                }
+            }
+            
+            .time-container{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                .icon{
+                    font-size: $iconFontSize;
+                    color: $primaryColor1;
+                    margin-right: 10px;
+                }
+                #time{
 
+                    font-size: 1.8em;
+                    color: $primaryColor1;
+                }
+            }
+        }
+        
+    }
+}
+
+.main {
+    .container-sideBar-mainContent{
+        .main-content{
+            z-index: -2;
+            flex-basis: 100%;
+            background-color: green;
+            height: 100vh;
+            position: relative;
+
+            .demo-content{
+                border: solid 2px pink;
+                height: 500px;
+                position: absolute;
+                right: 0;
+                width: 85%;
+            }
+        }
+    }
+}
+
+
+
+.main {
+    .footer{
+        background-color: $primaryColor1;
+        width: 100%;
+        z-index: -2;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        
+        .wrapper{
+            display: flex;
+            align-items: center;
+            margin-left: 15%;
+            justify-content: center;
+            svg{
+                width: 1.5em;
+                fill: white;
+                margin-right: 2px;
+            }
+
+            p{
+                font-size: 1.5em;
+                color: white;
+                margin-right: 5px;
+            }
+        }
+    }
+
+
+   
+}

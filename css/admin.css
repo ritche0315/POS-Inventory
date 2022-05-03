@@ -18,6 +18,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .main .header .system-logo {
@@ -50,7 +53,7 @@
 }
 
 .main .header .wrapper-fa-bars .icon {
-  font-size: 24px;
+  font-size: 15px;
 }
 
 .main .header .logged-In {
@@ -118,7 +121,155 @@
 }
 
 .main .header .logout :nth-child(1) {
-  font-size: 24px;
+  font-size: 15px;
   color: white;
+}
+
+.main .container-sideBar-mainContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main .container-sideBar-mainContent .sideBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3D84CD), to(#AAD8F1));
+  background: linear-gradient(180deg, #3D84CD 0%, #AAD8F1 100%);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  min-width: 10%;
+  width: 15%;
+}
+
+.main .container-sideBar-mainContent .sideBar .menu-title {
+  margin: 50% 0 5% 5%;
+  font-size: 1.2em;
+  color: white;
+}
+
+.main .container-sideBar-mainContent .sideBar .navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.main .container-sideBar-mainContent .sideBar .navigation button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  margin: 2em 0 2em 0;
+  cursor: pointer;
+}
+
+.main .container-sideBar-mainContent .sideBar .navigation span {
+  width: 32px;
+  margin-left: 10%;
+}
+
+.main .container-sideBar-mainContent .sideBar .navigation p {
+  font-size: 1.7em;
+  color: white;
+}
+
+.main .container-sideBar-mainContent .sideBar .navigation .icon {
+  font-size: 15px;
+  color: white;
+}
+
+.main .container-sideBar-mainContent .sideBar .time-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+.main .container-sideBar-mainContent .sideBar .time-container .icon {
+  font-size: 15px;
+  color: #1565c0;
+  margin-right: 10px;
+}
+
+.main .container-sideBar-mainContent .sideBar .time-container #time {
+  font-size: 1.8em;
+  color: #1565c0;
+}
+
+.main .container-sideBar-mainContent .main-content {
+  z-index: -2;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  background-color: green;
+  height: 100vh;
+  position: relative;
+}
+
+.main .container-sideBar-mainContent .main-content .demo-content {
+  border: solid 2px pink;
+  height: 500px;
+  position: absolute;
+  right: 0;
+  width: 85%;
+}
+
+.main .footer {
+  background-color: #1565c0;
+  width: 100%;
+  z-index: -2;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+}
+
+.main .footer .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 15%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main .footer .wrapper svg {
+  width: 1.5em;
+  fill: white;
+  margin-right: 2px;
+}
+
+.main .footer .wrapper p {
+  font-size: 1.5em;
+  color: white;
+  margin-right: 5px;
 }
 /*# sourceMappingURL=admin.css.map */
