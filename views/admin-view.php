@@ -29,91 +29,85 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                 <p>Logged in:</p>
                 <label for="user-login">User:</label>
                 <p id="user-login">Ritche D. Laganson</p>
-                <span class="divider"></span>
+                <span></span>
                 <label for="user-role">Role:</label>
                 <p id="user-role">Admin</p>
-                <span class="divider"></span>
+                <span></span>
             </div>
             <div class="logout">
                 <i class="fa-solid fa-power-off"></i>
             </div>
         </div>
 
-        <div class="container-sideBar-mainContent">
-            <div class="sideBar">
-                <p class="menu-title">Menu</p>
-                <div class="navigation">
-                    <button>
-                        <span><i class="fa-solid fa-gauge icon"></i></span>
-                        <p>Dashboard</p>
-                    </button>
-                    <button>
-                        <span><i class="fa-solid fa-cart-shopping icon"></i></span>
-                        <p>Product</p>
-                    </button>
-                    <button>
-                        <span><i class="fa-solid fa-truck icon"></i></span>
-                        <p>Supplier</p>
-                    </button>
-                    <button>
-                        <span><i class="fa-solid fa-boxes-stacked icon"></i></span>
-                        <p>Stock</p>
-                    </button>
-                    <button>
-                        <span><i class="fa-solid fa-user-group icon"></i></span>
-                        <p>User Accounts</p>
-                    </button>
-                    <button>
-                        <span><i class="fa-solid fa-cash-register icon"></i></span>
-                        <p>POS</p>
-                    </button>
-                    <button>
-                        <span><i class="fa-solid fa-clipboard icon"></i></span>
-                        <p>Reports</p>
-                    </button>
-                    <button>
-                        <span><i class="fa-solid fa-clipboard icon"></i></span>
-                        <p>Settings</p>
-                    </button>
-                </div>
-
-               
+        <div class="sideBar">
+            <p class="menu-title">Menu</p>
+            <div class="navigation">
+                <button>
+                    <span><i class="fa-solid fa-gauge icon"></i></span>
+                    <p>Dashboard</p>
+                </button>
+                <button>
+                    <span><i class="fa-solid fa-cart-shopping icon"></i></span>
+                    <p>Product</p>
+                </button>
+                <button>
+                    <span><i class="fa-solid fa-truck icon"></i></span>
+                    <p>Supplier</p>
+                </button>
+                <button>
+                    <span><i class="fa-solid fa-boxes-stacked icon"></i></span>
+                    <p>Stock</p>
+                </button>
+                <button>
+                    <span><i class="fa-solid fa-user-group icon"></i></span>
+                    <p>User Accounts</p>
+                </button>
+                <button>
+                    <span><i class="fa-solid fa-cash-register icon"></i></span>
+                    <p>POS</p>
+                </button>
+                <button>
+                    <span><i class="fa-solid fa-clipboard icon"></i></span>
+                    <p>Reports</p>
+                </button>
+                <button>
+                    <span><i class="fa-solid fa-clipboard icon"></i></span>
+                    <p>Settings</p>
+                </button>
             </div>
-
-            
-            <div class="main-content">
-                <div class="row-1">
-                    <div class="title-wrapper">
-                        <p>Dashboard</p>
-                    </div>
-                    <div class="date-container">
-                        <div class="wrapper">
-                            <i class="fa-solid fa-calendar"></i>
-                            <span id="date"></span>
-                        </div>
-                    </div>
+        </div>
+       
+        <div class="main-content">
+            <div class="row-1">
+                <div class="title-wrapper">
+                    <p>Dashboard</p>
                 </div>
-                <div class="row-2">
-                    <div class="col-4-items">
-                        <div class="item-1"></div>
-                        <div class="item-2"></div>
-                        <div class="item-3"></div>
-                        <div class="item-4"></div>
-                    </div>
-                    <br>
-                </div>
-                
-                <div class="row-3">
+                <div class="date-container">
                     <div class="wrapper">
-                        <div class="pie-chart-wrapper"></div>
-                        <div class="bar-graph-wrapper"></div>
+                        <i class="fa-solid fa-calendar"></i>
+                        <span id="date"></span>
                     </div>
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="col-4-items">
+                    <div class="item-1"></div>
+                    <div class="item-2"></div>
+                    <div class="item-3"></div>
+                    <div class="item-4"></div>
+                </div>
+            </div>
+            
+            <div class="row-3">
+                <div class="wrapper">
+                    <div class="pie-chart-wrapper"></div>
+                    <div class="bar-graph-wrapper"></div>
                 </div>
             </div>
         </div>
-      
+
         <div class="footer">
-            <div class="wrapper">
+            <div class="copyright">
                 <?php include '../images/copyright-svgrepo-com.svg'?>
                 <p id="copyright">Ritche Inc.</p>
                 <p>Blizzard POS System</p>
