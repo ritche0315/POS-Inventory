@@ -1,3 +1,4 @@
+var toggleStatus = false;
 function getDateTimeNow(){
 
     var timeObj = new Date();
@@ -35,7 +36,7 @@ function getDateTimeNow(){
     document.getElementById("date").innerHTML = date1.toLocaleDateString([], options);
 }
 function logoutClicked(){
-    document.getElementById("sidebar-logout-btn").addEventListener("click", ()=>{
+    document.getElementById("logout").addEventListener("click", ()=>{
         if (confirm("Are you sure do you want to logout?")) {
             txt = "GoodByee :)";
             window.location.href = "../models/logout-model.php";
@@ -48,32 +49,71 @@ function logoutClicked(){
 }
 
 
-function toggleHideShow(){
-    
-    let toggleButton = document.getElementsByClassName("toggle-button")[0];
-    toggleButton.addEventListener("click", ()=>{
-        hide();
+function toggleSideBar(){ 
+    document.getElementById("toggle").addEventListener("click", ()=>{
+        if(toggleStatus){
+            showSideBar();
+            toggleStatus = false;
+        }else{
+            hideSideBar();
+            toggleStatus = true;
+        }
     });
 }
 
-function hide(){
-    let main = document.getElementsByClassName("main")[0];
-    main.style.gridTemplateColumns = "100px 2fr";
+function hideSideBar(){
+   const sb = document.querySelector(".sideBar");
+   sb.style.animation = "hideSideBar 300ms ease-in forwards";
+   const main = document.querySelector(".main");
+   main.style.animation = "hideSideBarGridTemplate 200ms ease-in forwards";
+}
+ 
+function showSideBar(){
+    const sb = document.querySelector(".sideBar");
+    sb.style.animation = "showSideBar 300ms ease-in forwards";
+    const main = document.querySelector(".main");
+    main.style.animation = "showSideBarGridTemplate 300ms ease-in forwards";
+}
 
-    let sideBar = document.getElementsByClassName("side-bar")[0];
+function sideBarNavigation(){
+    document.getElementById("productBtn").addEventListener("click", ()=>{
+        xhttp = new XMLHttpRequest();
+        const mc = document.querySelector(".main-content");
+        mc.setAttribute("w3-include-html", "../views/product-view.php");
+        let file = mc.getAttribute("w3-include-html");
+        
+        xhttp.open("GET", file, true);
+        xhttp.onload = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {mc.innerHTML = this.responseText;}
+            if (this.status == 404) {mc.innerHTML = "Page not found.";}
+          }
+        }
+        xhttp.send();
 
-    sideBar.style.overflow = "hidden";
+    });
+    document.getElementById("dashboardBtn").addEventListener("click", ()=>{
+        xhttp = new XMLHttpRequest();
+        const mc = document.querySelector(".main-content");
+        mc.setAttribute("w3-include-html", "../views/dashboard-view.php");
+        let file = mc.getAttribute("w3-include-html");
+        xhttp.open("GET", file, true);
+        xhttp.onload = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {mc.innerHTML = this.responseText;}
+            if (this.status == 404) {mc.innerHTML = "Page not found.";}
+          }
+        }
+        xhttp.send();
 
-    let elWrapper = document.createElement("div");
-    elWrapper.style.backgroundColor = "green";
-    elWrapper.style.gridArea = "area-side-bar";
-    sideBar.appendChild(elWrapper);
+    });
 }
 
 function loadItems(){
     setInterval(getDateTimeNow, 1000);
     logoutClicked();
-    toggleHideShow();
+    toggleSideBar();
+    sideBarNavigation();
 }
 
 window.addEventListener("load", loadItems);

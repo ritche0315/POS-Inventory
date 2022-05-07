@@ -8,6 +8,8 @@
     $primaryColor7: #388E3C;
     $primaryColor8: #D32F2F;
 
+    // hover
+    $hoverColor1:#0D47A1;
     $primaryShadow: 0 1px 12px 0 rgba(0,0,0,0.2);
     $gradientColor1: linear-gradient(180deg, #3D84CD 0%, #AAD8F1 100%);
 
@@ -68,6 +70,14 @@ body{
         :nth-child(1){
             color: white;
             font-size: $iconFontSize;
+            cursor: pointer;
+            margin: 0 2em;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        :nth-child(1):hover{
+            background-color: $hoverColor1;
         }
     }
 
@@ -103,6 +113,12 @@ body{
         :nth-child(1){
             color: white;
             font-size: 3em;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        :nth-child(1):hover{
+           background-color: #D32F2F;
         }
     }
 }
@@ -114,6 +130,7 @@ body{
     display: block;
     background: $gradientColor1;
     height: 100%;
+    width: 100%;
     .menu-title{
         color: white;
         font-size: 1.4em;
@@ -163,8 +180,9 @@ body{
         .title-wrapper{
             flex-basis: 50%;
             :nth-child(1){
-                margin: 10px;
+                margin: 1em;
                 font-size: 3em;
+                color: $primaryColor3;
             }
         }
 
@@ -275,3 +293,43 @@ body{
         }
     }
 }
+
+
+@keyframes showSideBar {
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes hideSideBar {
+    from{
+        width: 100%;
+    }
+    to{
+        width: 0;
+    }
+}
+
+@keyframes hideSideBarGridTemplate {
+    from{
+        grid-template-columns: .5fr 2fr;
+    }
+
+    to{
+        grid-template-columns: 0 1fr;
+    }
+}
+
+@keyframes showSideBarGridTemplate {
+    from{
+        grid-template-columns: 0 1fr;
+    }
+
+    to{
+        grid-template-columns: .5fr 2fr;
+    }
+}
+

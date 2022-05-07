@@ -5,6 +5,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
     header("Location:../views/login-view.php");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                 <?php include '../images/system-logo.svg';?>
             </div>
             <div class="wrapper-fa-bars">
-                <i class="fa-solid fa-bars icon"></i>
+                <i class="fa-solid fa-bars icon" id="toggle"></i>
             </div>
             <div class="logged-In">
                 <p>Logged in:</p>
@@ -35,18 +36,18 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                 <span></span>
             </div>
             <div class="logout">
-                <i class="fa-solid fa-power-off"></i>
+                <i class="fa-solid fa-power-off" id="logout"></i>
             </div>
         </div>
 
         <div class="sideBar">
             <p class="menu-title">Menu</p>
             <div class="navigation">
-                <button>
+                <button id="dashboardBtn">
                     <span><i class="fa-solid fa-gauge icon"></i></span>
                     <p>Dashboard</p>
                 </button>
-                <button>
+                <button id="productBtn">
                     <span><i class="fa-solid fa-cart-shopping icon"></i></span>
                     <p>Product</p>
                 </button>
@@ -78,32 +79,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
         </div>
        
         <div class="main-content">
-            <div class="row-1">
-                <div class="title-wrapper">
-                    <p>Dashboard</p>
-                </div>
-                <div class="date-container">
-                    <div class="wrapper">
-                        <i class="fa-solid fa-calendar"></i>
-                        <span id="date"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row-2">
-                <div class="col-4-items">
-                    <div class="item-1"></div>
-                    <div class="item-2"></div>
-                    <div class="item-3"></div>
-                    <div class="item-4"></div>
-                </div>
-            </div>
-            
-            <div class="row-3">
-                <div class="wrapper">
-                    <div class="pie-chart-wrapper"></div>
-                    <div class="bar-graph-wrapper"></div>
-                </div>
-            </div>
+            <?php include '../views/dashboard-view.php'?>
         </div>
 
         <div class="footer">

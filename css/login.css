@@ -5,7 +5,7 @@
     --primary-color3: #78909C;
     --primary-color4: #546E7A;
     --primary-color5: #CFD8DC;
-    
+    --hoverColor1:#0D47A1;
     --gradient-color1: linear-gradient(180deg, #3D84CD 0%, #AAD8F1 100%);
 
     font-size: 12px;
@@ -97,7 +97,7 @@ form{
 }
 
 #submit-button:hover{
-    background-color: var(--colorHover1);
+    background-color: var(--hoverColor1);
 }
 
 ::placeholder{
@@ -114,7 +114,8 @@ form{
 
 
 .successError{
-    animation: transitionIn 1s;
+    animation: transitionIn 1s forwards;
+    border-radius: 5px;
 }
 
 @keyframes animationSuccessError {
