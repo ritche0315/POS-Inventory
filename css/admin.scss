@@ -149,6 +149,10 @@ body{
             border: none;
             width: 100%;
             cursor: pointer;
+            transition-duration: 200ms;
+            transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+
             :nth-child(1){
                 width: 32px;
                 height: 32px;
@@ -164,6 +168,16 @@ body{
                 margin-left: 15px;
             }
         }
+
+        
+        .active{
+            background-color: $primaryColor1;
+        }
+
+        :nth-child(n):hover{
+            background-color: $primaryColor1;
+        }
+
     }
 }
 
@@ -294,6 +308,9 @@ body{
     }
 }
 
+
+
+// KEYFRAMES
 
 @keyframes showSideBar {
     from{

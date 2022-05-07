@@ -66,6 +66,8 @@ function hideSideBar(){
    sb.style.animation = "hideSideBar 300ms ease-in forwards";
    const main = document.querySelector(".main");
    main.style.animation = "hideSideBarGridTemplate 200ms ease-in forwards";
+   const nav = document.querySelector(".navigation");
+   nav.style.display = "none";
 }
  
 function showSideBar(){
@@ -73,10 +75,14 @@ function showSideBar(){
     sb.style.animation = "showSideBar 300ms ease-in forwards";
     const main = document.querySelector(".main");
     main.style.animation = "showSideBarGridTemplate 300ms ease-in forwards";
+    const nav = document.querySelector(".navigation");
+    nav.style.display = "block";
 }
 
 function sideBarNavigation(){
-    document.getElementById("productBtn").addEventListener("click", ()=>{
+    const prodBtn = document.getElementById("productBtn");
+    prodBtn.addEventListener("click", ()=>{
+        setActive();
         xhttp = new XMLHttpRequest();
         const mc = document.querySelector(".main-content");
         mc.setAttribute("w3-include-html", "../views/product-view.php");
@@ -92,7 +98,9 @@ function sideBarNavigation(){
         xhttp.send();
 
     });
-    document.getElementById("dashboardBtn").addEventListener("click", ()=>{
+    const dbBtn = document.getElementById("dashboardBtn");
+    dbBtn.addEventListener("click", ()=>{
+        setActive();
         xhttp = new XMLHttpRequest();
         const mc = document.querySelector(".main-content");
         mc.setAttribute("w3-include-html", "../views/dashboard-view.php");
@@ -107,8 +115,12 @@ function sideBarNavigation(){
         xhttp.send();
 
     });
+
 }
 
+function setActive(){
+    
+}
 function loadItems(){
     setInterval(getDateTimeNow, 1000);
     logoutClicked();
