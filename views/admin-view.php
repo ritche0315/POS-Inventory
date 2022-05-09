@@ -25,6 +25,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
             </div>
             <div class="wrapper-fa-bars">
                 <i class="fa-solid fa-bars icon" id="toggle"></i>
+                <span class="tooltip-text">toggle side bar</span>
             </div>
             <div class="logged-In">
                 <p>Logged in:</p>
@@ -43,38 +44,50 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
         <div class="sideBar">
             <p class="menu-title">Menu</p>
             <div class="navigation">
-                <button class="btn-nav active" id="dashboardBtn">
-                    <span><i class="fa-solid fa-gauge icon"></i></span>
-                    <p>Dashboard</p>
-                </button>
-                <button class="btn-nav" id="productBtn">
-                    <span><i class="fa-solid fa-cart-shopping icon"></i></span>
-                    <p>Product</p>
-                </button>
-                <button class="btn-nav">
-                    <span><i class="fa-solid fa-truck icon"></i></span>
-                    <p>Supplier</p>
-                </button>
-                <button class="btn-nav">
-                    <span><i class="fa-solid fa-boxes-stacked icon"></i></span>
-                    <p>Stock</p>
-                </button>
-                <button class="btn-nav">
-                    <span><i class="fa-solid fa-user-group icon"></i></span>
-                    <p>User Accounts</p>
-                </button>
-                <button class="btn-nav">
-                    <span><i class="fa-solid fa-cash-register icon"></i></span>
-                    <p>POS</p>
-                </button>
-                <button class="btn-nav">
-                    <span><i class="fa-solid fa-clipboard icon"></i></span>
-                    <p>Reports</p>
-                </button>
-                <button class="btn-nav">
-                    <span><i class="fa-solid fa-clipboard icon"></i></span>
-                    <p>Settings</p>
-                </button>
+               <ul>
+                    <li>
+                        <button class="btn-nav active" w3-include-html="../views/dashboard-view.php">
+                            <i class="fa-solid fa-gauge"></i>
+                            <p>Dashboard</p>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn-nav" w3-include-html="../views/product-view.php">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p>Product</p>
+                        </button>
+                    </li>
+                    <li>
+                        <button href="">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <p>Stock</p>
+                        </button>
+                    </li>
+                    <li>
+                        <button href="">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <p>Supplier</p>
+                        </button>
+                    </li>
+                    <li>
+                        <button href="">
+                            <i class="fa-solid fa-cash-register"></i>
+                            <p>POS</p>
+                        </button>
+                    </li>
+                    <li>
+                        <button href="">
+                            <i class="fa-solid fa-clipboard"></i>
+                            <p>Reports</p>
+                        </button>
+                    </li>
+                    <li>
+                        <button href="">
+                            <i class="fa-solid fa-gear"></i>
+                            <p>Settings</p>
+                        </button>
+                    </li>
+               </ul>
             </div>
         </div>
        

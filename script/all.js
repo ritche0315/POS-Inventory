@@ -67,7 +67,7 @@ function hideSideBar(){
    const main = document.querySelector(".main");
    main.style.animation = "hideSideBarGridTemplate 200ms ease-in forwards";
    const nav = document.querySelector(".navigation");
-   nav.style.display = "none";
+   nav.style.animation = "hideSideBar 300ms ease-in forwards";
 }
  
 function showSideBar(){
@@ -76,56 +76,42 @@ function showSideBar(){
     const main = document.querySelector(".main");
     main.style.animation = "showSideBarGridTemplate 300ms ease-in forwards";
     const nav = document.querySelector(".navigation");
-    nav.style.display = "block";
+    nav.style.animation = "showSideBar 300ms ease-in forwards";
 }
 
-function sideBarNavigation(){
-    const prodBtn = document.getElementById("productBtn");
-    prodBtn.addEventListener("click", ()=>{
-        setActive();
+function setActiveNav(){
+    // Get all buttons with class="btn" inside the container
+    var navbtns = document.getElementsByClassName("btn-nav");
+    for (var i = 0; i < navbtns.length; i++) {
+        navbtns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+
+        // ajax get the html file
         xhttp = new XMLHttpRequest();
         const mc = document.querySelector(".main-content");
-        mc.setAttribute("w3-include-html", "../views/product-view.php");
-        let file = mc.getAttribute("w3-include-html");
-        
+        var file = current[0].getAttribute("w3-include-html");
         xhttp.open("GET", file, true);
         xhttp.onload = function() {
-          if (this.readyState == 4) {
+        if (this.readyState == 4) {
             if (this.status == 200) {mc.innerHTML = this.responseText;}
             if (this.status == 404) {mc.innerHTML = "Page not found.";}
-          }
+        }
         }
         xhttp.send();
-
     });
-    const dbBtn = document.getElementById("dashboardBtn");
-    dbBtn.addEventListener("click", ()=>{
-        setActive();
-        xhttp = new XMLHttpRequest();
-        const mc = document.querySelector(".main-content");
-        mc.setAttribute("w3-include-html", "../views/dashboard-view.php");
-        let file = mc.getAttribute("w3-include-html");
-        xhttp.open("GET", file, true);
-        xhttp.onload = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {mc.innerHTML = this.responseText;}
-            if (this.status == 404) {mc.innerHTML = "Page not found.";}
-          }
-        }
-        xhttp.send();
+    }
 
-    });
-
+   
 }
 
-function setActive(){
-    
-}
+
 function loadItems(){
     setInterval(getDateTimeNow, 1000);
     logoutClicked();
     toggleSideBar();
-    sideBarNavigation();
+    setActiveNav();
 }
 
 window.addEventListener("load", loadItems);

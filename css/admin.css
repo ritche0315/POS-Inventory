@@ -64,19 +64,49 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .header .wrapper-fa-bars :nth-child(1) {
   color: white;
   font-size: 15px;
   cursor: pointer;
-  margin: 0 2em;
+  margin: 0 1em 0 2em;
   padding: 8px;
   border-radius: 5px;
 }
 
-.header .wrapper-fa-bars :nth-child(1):hover {
+.header .wrapper-fa-bars :nth-child(2) {
+  position: absolute;
+  visibility: hidden;
+  color: white;
   background-color: #0D47A1;
+  padding: 8px;
+  font-size: 1.3em;
+  left: 100%;
+  width: 90px;
+}
+
+.header .wrapper-fa-bars :nth-child(2):after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #0D47A1 transparent transparent;
+}
+
+.header .wrapper-fa-bars:hover :nth-child(1) {
+  background-color: #0D47A1;
+}
+
+.header .wrapper-fa-bars:hover :nth-child(2) {
+  -webkit-transition-delay: 500ms;
+          transition-delay: 500ms;
+  visibility: visible;
 }
 
 .header .logged-In {
@@ -149,56 +179,47 @@ body {
   margin: 20px 10px 20px 10px;
 }
 
-.sideBar .navigation {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.sideBar .navigation :nth-child(1) {
+  display: block;
 }
 
-.sideBar .navigation :nth-child(n) {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 5px;
-  background-color: transparent;
-  border: none;
+.sideBar .navigation :nth-child(1) li {
   width: 100%;
+  -webkit-transition: 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.sideBar .navigation :nth-child(1) li > .active {
+  background-color: #1565c0;
+}
+
+.sideBar .navigation :nth-child(1) li:hover {
+  background-color: #1565c0;
+}
+
+.sideBar .navigation :nth-child(1) li > button {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  grid-auto-rows: 1fr;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
   cursor: pointer;
-  -webkit-transition-duration: 200ms;
-          transition-duration: 200ms;
-  -webkit-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-          transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  background: transparent;
+  border: none;
 }
 
-.sideBar .navigation :nth-child(n) :nth-child(1) {
-  width: 32px;
-  height: 32px;
-}
-
-.sideBar .navigation :nth-child(n) :nth-child(1) :nth-child(1) {
-  color: white;
+.sideBar .navigation :nth-child(1) li > button > i {
   font-size: 15px;
+  margin: 0 auto;
 }
 
-.sideBar .navigation :nth-child(n) :nth-child(2) {
-  color: white;
-  font-size: 1.5em;
-  margin-left: 15px;
-}
-
-.sideBar .navigation .active {
-  background-color: #1565c0;
-}
-
-.sideBar .navigation :nth-child(n):hover {
-  background-color: #1565c0;
+.sideBar .navigation :nth-child(1) li > button > p {
+  font-size: 1.7em;
+  text-align: left;
 }
 
 .main-content {
@@ -378,36 +399,44 @@ body {
 @-webkit-keyframes showSideBar {
   from {
     width: 0;
+    opacity: 0;
   }
   to {
     width: 100%;
+    opacity: 100%;
   }
 }
 
 @keyframes showSideBar {
   from {
     width: 0;
+    opacity: 0;
   }
   to {
     width: 100%;
+    opacity: 100%;
   }
 }
 
 @-webkit-keyframes hideSideBar {
   from {
     width: 100%;
+    opacity: 100%;
   }
   to {
     width: 0;
+    opacity: 0;
   }
 }
 
 @keyframes hideSideBar {
   from {
     width: 100%;
+    opacity: 100%;
   }
   to {
     width: 0;
+    opacity: 0;
   }
 }
 
