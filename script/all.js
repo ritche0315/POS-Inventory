@@ -79,39 +79,12 @@ function showSideBar(){
     nav.style.animation = "showSideBar 300ms ease-in forwards";
 }
 
-function setActiveNav(){
-    // Get all buttons with class="btn" inside the container
-    var navbtns = document.getElementsByClassName("btn-nav");
-    for (var i = 0; i < navbtns.length; i++) {
-        navbtns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-
-        // ajax get the html file
-        xhttp = new XMLHttpRequest();
-        const mc = document.querySelector(".main-content");
-        var file = current[0].getAttribute("w3-include-html");
-        xhttp.open("GET", file, true);
-        xhttp.onload = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {mc.innerHTML = this.responseText;}
-            if (this.status == 404) {mc.innerHTML = "Page not found.";}
-        }
-        }
-        xhttp.send();
-    });
-    }
-
    
-}
-
 
 function loadItems(){
     setInterval(getDateTimeNow, 1000);
     logoutClicked();
     toggleSideBar();
-    setActiveNav();
 }
 
 window.addEventListener("load", loadItems);
