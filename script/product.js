@@ -1,8 +1,9 @@
-var tableProduct = document.querySelector(".product-table");
-var tableThead = document.querySelector(".product-table-thead")
-var tableBody = document.querySelector(".product-table-tbody");
+var tableProduct = document.querySelector("#table-product");
+var tableThead = document.querySelector("#table-product > thead")
+var tableBody = document.querySelector("#table-product > tbody");
 
 
+window.addEventListener("load", populateTable);
 
 // Populate Table
 function populateTable() {
@@ -124,6 +125,9 @@ function getTableRows() {
 function getSVGIcon(path) {
   return helperAJAXrequest("GET", path, null, true);
 }
+
+// pagination
+
 
 // HELPER FUNCTIONS
 function helperAJAXrequest(method, url, data, type) {

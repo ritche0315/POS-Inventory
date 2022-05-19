@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Map</title>
+
+    <style>
+        .active{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list-container">
+
+    </ul>
+    <button id="btnFirst"><<</button>
+    <button id="btnPrev"><</button>
+    
+    <div id="pagination-buttons">
+
+    </div>
+    <button id="btnNext">></button>
+    <button id="btnLast">>></button>
+    <script>
+        
+        var records = [];
+        var page = 1;
+        const MAX_VISIBLE_PAGES = 10;
+        // get total pages
+        var page_count = 0; 
+        function insertRecords(arr){
+            for(let i = 1; i <= 1000; i++){
+                arr.push("item "+ i);
+            }
+
+            
+            page_count = Math.ceil(arr.length / MAX_VISIBLE_PAGES);
+        }
+
+        function pageRange(totalPages, maxVisiblePage){
+
+            const half  =  Math.round(maxVisiblePage / 2);
+            let to = maxVisiblePage;
+
+            if(page + half >= totalPages)
+            {
+                to = totalPages;
+            }
+            
+
+            else if(page > half)
+            {
+                to = page + half;
+            }
+
+
+            let from = to - maxVisiblePage;
+            return Array.from({length:maxVisiblePage}, (_, i) => (i + 1) + from);
+
+        }
+        
+        function paginationButtons(dataSource, totalPages, currentPage, maxPages){
+            const pagination_buttons = document.getElementById("pagination-buttons");
+
+            pages = pageRange(totalPages, maxPages);
+
+            // clear prev page range
+            while(pagination_buttons.firstChild){
+                pagination_buttons.removeChild(pagination_buttons.firstChild);
+            }
+
+            for(let i = 0; i < pages.length; i++){
+
+                if(page == pages[i]){
+                    const button_pageNumber_el = document.createElement("button");
+                    button_pageNumber_el.value = pages[i];
+                    button_pageNumber_el.className = "page active";
+                    button_pageNumber_el.textContent = pages[i];
+
+                    pagination_buttons.appendChild(button_pageNumber_el);
+                }else{
+
+                    const button_pageNumber_el = document.createElement("button");
+                    button_pageNumber_el.value = pages[i];
+                    button_pageNumber_el.className = "page";
+                    button_pageNumber_el.textContent = pages[i];
+
+                    pagination_buttons.appendChild(button_pageNumber_el);
+                }
+            }
+
+
+             // add action event
+
+            const page_number_btn = document.getElementsByClassName("page");
+            for(let i = 0; i < page_number_btn.length; i++){
+                page_number_btn[i].addEventListener("click", function(){
+                    // removeClass();
+                    page = parseInt(page_number_btn[i].value);
+                    displayList(records, page, MAX_VISIBLE_PAGES);
+                    paginationButtons(records, page_count, page, MAX_VISIBLE_PAGES);
+                });
+            }
+
+            
+            const btn_next_el = document.getElementById("btnNext");
+            btn_next_el.addEventListener("click", nextPage);
+
+            const btn_prev_el = document.getElementById("btnPrev");
+            btn_prev_el.addEventListener("click", prevPage);
+
+            const btn_fisrt_el = document.getElementById("btnFirst");
+            btn_fisrt_el.addEventListener("click", firstPage);
+
+            const btn_last_el = document.getElementById("btnLast");
+            btn_last_el.addEventListener("click", lastPage);
+            
+            if(page >= page_count){
+                btn_next_el.style.display= "none";
+                btn_last_el.style.display= "none";
+            }else{
+                btn_next_el.style.display= "block";
+                btn_last_el.style.display= "block";
+            }
+
+            if(page == 1){
+                btn_fisrt_el.style.display= "none";
+                btn_prev_el.style.display= "none";
+            }else{
+                btn_fisrt_el.style.display= "block";
+                btn_prev_el.style.display= "block";
+            }
+        }
+
+     
+        function nextPage(){
+            if(page < page_count){
+                page++;
+                displayList(records, page, MAX_VISIBLE_PAGES);
+                paginationButtons(records, page_count, page, MAX_VISIBLE_PAGES);
+            }
+            
+        }
+
+        function prevPage(){
+            if(page > 1){
+                page--;
+                displayList(records, page, MAX_VISIBLE_PAGES);
+                paginationButtons(records, page_count, page, MAX_VISIBLE_PAGES);
+            }
+            
+        }
+
+        function firstPage(){
+            page = 1;
+            displayList(records, page, MAX_VISIBLE_PAGES);
+            paginationButtons(records, page_count, page, MAX_VISIBLE_PAGES);
+            
+        }
+
+        function lastPage(){
+            page = page_count;
+            displayList(records, page, MAX_VISIBLE_PAGES);
+            paginationButtons(records, page_count, page, MAX_VISIBLE_PAGES);
+            
+        }
+        
+
+        function displayList(dataSource, currentPage, records_per_page){
+            const list_container_el = document.querySelector(".list-container");
+            currentPage--;
+
+            let start = currentPage * records_per_page;
+            let end = start + records_per_page;
+
+            // clear prev batch
+            while(list_container_el.firstChild){
+                list_container_el.removeChild(list_container_el.firstChild);
+            }
+
+            for(let i = start; i < end; i++){
+                const li_el = document.createElement("li");
+                li_el.textContent = dataSource[i];
+                list_container_el.appendChild(li_el);
+            }
+        }
+
+        insertRecords(records);
+        displayList(records, page, MAX_VISIBLE_PAGES);
+        paginationButtons(records, page_count, page, MAX_VISIBLE_PAGES);
+       
+
+      
+    </script>
+</body>
+</html>

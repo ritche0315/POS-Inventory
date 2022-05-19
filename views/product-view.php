@@ -115,7 +115,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                         </div>
                     </div>
                     <div class="row-2">
-                        <div>
+                        <div class="container-1">
                             <label for="cmb-entries">Entries per page</label>
                             <select id="cmb-entries">
                                 <option value="5">5</option>
@@ -124,7 +124,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                             </select>
                         </div>
 
-                        <div>
+                        <div class="container-2">
                             <div class="search-wrapper">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <input type="text" placeholder="Search for product information">
@@ -135,69 +135,30 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                         <div class="wrapper">
                             <table id="table-product">
                                 <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>name</th>
-                                        <th>id</th>
-                                        <th>name</th>
-                                        <th>id</th>
-                                        <th>name</th>
-                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                    </tr>  
-                                    <tr>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                    </tr>  
-                                    <tr>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                        <td>1</td>
-                                        <td>name1</td>
-                                    </tr>  
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="row-4">
-                        <div>
-                            <span>Showing</span>
+                        <div class="item-1">
                             <span id="entries">1-10</span>
-                            <span>of</span>
                             <span id="total-entries">200</span>
-                            <span>entries</span>
                         </div>
 
-                        <div>
-                            <div>
-                                <button id="firstPage-btn"><<</button>
-                                <button id="prevPage-btn"><</button>
-                            </div>
+                        <div class="item-2">
                             <div id="pagination-numbers">
+                                <button id="firstPage-btn">first</button>
+                                <button id="prevPage-btn">prev</button>
                                 <button>1</button>
                                 <button>2</button>
                                 <button>3</button>
                                 <button>4</button>
                                 <button>5</button>
-                            </div>
-                            <div>
-                                <button id="nextPage-btn">></button>
-                                <button id="lastPage-btn">>></button>
+                                <button id="nextPage-btn">next</button>
+                                <button id="lastPage-btn">last</button>
                             </div>
                         </div>
                     </div>

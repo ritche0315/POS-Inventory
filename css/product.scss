@@ -211,7 +211,7 @@ body{
     // layout
     overflow-y: auto;
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 60px 3fr;
     .row-1{
         display: flex;
         align-items: center;
@@ -247,17 +247,17 @@ body{
         .container{
             display: grid;
             grid-template-rows: 8rem 8rem 1fr 8rem;
-
+            border-top:solid 1px $primaryColor5;
+            border-bottom:solid 1px $primaryColor5;
             .row-1{
-                border: solid 1px black;
-                width: 100%;
+                border-bottom: solid 1px $primaryColor5;
                 :nth-child(1){
                     display: flex;
                     align-items: center;
-                    margin-left: 1rem;
                     :nth-child(1){
                         font-size: $iconFontSize;
                         margin-right: 1rem;
+                        margin-left: 10px;
                     }
                     :nth-child(2){
                         font-size: 1.5rem;
@@ -269,56 +269,44 @@ body{
                 display: flex;
                 align-items: center;
                 margin: 0 10px;
-                :nth-child(1){
-                    flex-basis: 50%;
-                    display: flex;
-                    align-items: center;
-                    :nth-child(1){
-                        width: 100%;
-                        max-width: 150px;
-                        padding: 5px;
-                        font-size: 1.7rem;
+                
+                .container-1{
+                    flex-basis:50%;
+                    :nth-child(n){
+                        font-size:1.7rem;
+                        margin-right: 5px;
                     }
-                    :nth-child(2){
-                        width: 100%;
-                        max-width: 80px;
-                        min-width: 50px;
-                        padding:5px;
-                        font-size: 1.7rem;
-                        :nth-child(n){
-                            font-size: 1.7rem;
-                        }
-                    }
-                }
 
-                :nth-child(2){
-                    width: 50%;
-                    display: flex;
-                    justify-content: flex-end;
+                    #cmb-entries{
+                        border: solid 1px $primaryColor5;
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                    
+                }
+                .container-2{
+                    flex-basis:50%;
+                    display:flex;
+                    justify-content:flex-end;
                     .search-wrapper{
-                        display: flex;
-                        align-items: center;
-                        border: solid 1px $primaryColor3;
-                        width: 100%;
                         background-color: white;
+                        display: flex;
+                        align-items:center;
+                        flex-wrap: nowrap;
+                        width: 80%;
+                        padding: 5px;
+                        border: solid 1px $primaryColor5;
                         :nth-child(1){
-                            width: 100%;
-                            max-width: 10%;
-                            margin: 0 3px;
-                            font-size: 20px;
+                            font-size: $iconFontSize;
                             padding: 5px;
-                            color: $primaryColor3;
+                            color: $primaryColor4;
+                            margin-right: 5px;
                         }
                         :nth-child(2){
-                            width: 100%;
-                            max-width: 90%;
-                            border: none;
-                            outline-color: $primaryColor1;
+                            border:none;
                             font-size: 1.7rem;
                             padding: 5px;
-                            margin: 3px;
-
-                            
+                            width: 100%;
                         }
 
                         :placeholder-shown{
@@ -326,20 +314,22 @@ body{
                         }
                     }
                 }
+                
             }
 
             .row-3{
-                border: solid 1px black;
                 
                 margin: 0 10px;
                 .wrapper{
-                    border: solid 1px black;
+                    border: solid 1px $primaryColor5;
                     height: 400px;
+                    background-color: white;
+                    overflow: auto;
                 }
 
                 .wrapper{
                     #table-product{
-                        table-layout: auto;
+                        table-layout: fixed;
                         border-collapse: collapse;
                         width:100%;
                         text-align: center;
@@ -383,60 +373,54 @@ body{
                 display: flex;
                 align-items: center;
                 margin: 0 10px;
-                :nth-child(1){
-                    flex-basis: 50%;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    :nth-child(1){
-                        font-size: 1.7rem;
-                        flex-basis: 10%; 
-                    }
-                    :nth-child(2){
-                        font-size: 1.7rem;
-                        flex-basis: 7%; 
-                    }
-                    :nth-child(3){
-                        font-size: 1.7rem;
-                        flex-basis: 5%; 
-                    }
-                    :nth-child(4){
-                        font-size: 1.7rem;
-                        flex-basis: 5%; 
-                    }
-                    :nth-child(5){
-                        font-size: 1.7rem;
-                        flex-basis: 5%; 
-                    }
-                }
-                :nth-child(2){
-                    flex-basis: 50%;
-                    display: grid;
-                    grid-template-columns: 1fr 2fr 1fr;
-                    :nth-child(1){
-                        :nth-child(n){
-                            min-width: 32px;
-                        }
-                    }
-                    :nth-child(2){
-                        display: inline;
-                        :nth-child(n){
-                            min-width: 32px;
-                            position: relative;
-                            float: left;
-                            height: 32px;
-                            text-align: center;
-                        }
-                    }
-                    :nth-child(3){
-                        display: inline-block;
-                        :nth-child(n){
-                            min-width: 32px;
-                        }
-                    }
-                }
-            }
 
+                .item-1{
+                    flex-basis: 50%;
+                    :nth-child(n){
+                        font-size: 1.7rem;
+                    }
+                }
+
+                .item-2{
+                    flex-basis: 50%;
+                    #pagination-numbers{
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        :nth-child(n){
+                            min-width: 50px;
+                            height: 32px;
+                            font-size: 1.7rem;
+                            color: $primaryColor1;
+                            cursor: pointer;
+                            border: none;
+                        }
+                        :nth-child(n + 3){
+                            min-width: 32px;
+                            height: 32px;
+                        }
+    
+                        :nth-child(n + 8){
+                            min-width: 50px;
+                            height: 32px;
+                        }
+    
+    
+                        :nth-child(n):hover{
+                            color: white;
+                            background-color: $hoverColor1;
+                            
+                        }
+
+                        .active{
+                            background-color: $hoverColor1;
+                            color: white;
+                        }
+                    }
+                   
+                }
+                
+            }
 
         }
         
