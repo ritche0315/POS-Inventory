@@ -210,6 +210,7 @@ body{
 
     // layout
     overflow-y: auto;
+    overflow-x: auto;
     display: grid;
     grid-template-rows: 60px 3fr;
     .row-1{
@@ -320,18 +321,21 @@ body{
             .row-3{
                 
                 margin: 0 10px;
+                display: flex;
+                justify-content: center;
                 .wrapper{
                     border: solid 1px $primaryColor5;
-                    height: 400px;
+                    height: auto;
                     background-color: white;
-                    overflow: auto;
+                    overflow-x: auto;
+                    border: solid 1px;
+                    width: 100%;
                 }
-
                 .wrapper{
                     #table-product{
-                        table-layout: fixed;
+                        table-layout: auto;
                         border-collapse: collapse;
-                        width:100%;
+                        width: 100%;
                         text-align: center;
                     }
                     #table-product{
@@ -348,6 +352,8 @@ body{
                             height: 30px;
                             th{
                                 font-size: 1.7rem;
+                                padding:5px;
+                                margin: 10px;
                             }
                         }
                         tbody{
@@ -383,39 +389,69 @@ body{
 
                 .item-2{
                     flex-basis: 50%;
-                    #pagination-numbers{
+                    #pagination{
                         display: flex;
                         align-items: center;
                         justify-content: flex-end;
-                        :nth-child(n){
-                            min-width: 50px;
-                            height: 32px;
+                        
+                        :nth-child(1){
                             font-size: 1.7rem;
+                            height: 32px;
+                            margin: 0 3px;
+                            padding: 5px;
+                            border: none;
                             color: $primaryColor1;
                             cursor: pointer;
+                        }
+                        :nth-child(2){
+                            font-size: 1.7rem;
+                            height: 32px;
+                            margin: 0 3px;
+                            padding: 5px;
                             border: none;
+                            color: $primaryColor1;
+                            cursor: pointer;
                         }
-                        :nth-child(n + 3){
-                            min-width: 32px;
+                        .page-numbers{
+
+                            :nth-child(n){
+                                min-width: 32px;
+                                height: 32px;
+                                font-size: 1.7rem;
+                                padding:5px;
+                                border:none;
+                                color:$primaryColor1;
+                                cursor: pointer;
+                            }
+                            :nth-child(n):hover{
+                                background-color: $hoverColor1;
+                                color:white;
+                            }
+
+                            .active{
+                                background-color: $hoverColor1;
+                                color: white;
+                            }
+                        }
+                        :nth-child(4){
+                            font-size: 1.7rem;
                             height: 32px;
+                            margin: 0 3px;
+                            padding: 5px;
+                            border: none;
+                            color: $primaryColor1;
+                            cursor: pointer;
                         }
-    
-                        :nth-child(n + 8){
-                            min-width: 50px;
+                        :nth-child(5){
+                            font-size: 1.7rem;
                             height: 32px;
-                        }
-    
-    
-                        :nth-child(n):hover{
-                            color: white;
-                            background-color: $hoverColor1;
-                            
+                            margin: 0 3px;
+                            padding: 5px;
+                            border: none;
+                            color: $primaryColor1;
+                            cursor: pointer;
                         }
 
-                        .active{
-                            background-color: $hoverColor1;
-                            color: white;
-                        }
                     }
                    
                 }

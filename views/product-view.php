@@ -149,14 +149,10 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                         </div>
 
                         <div class="item-2">
-                            <div id="pagination-numbers">
+                            <div id="pagination">
                                 <button id="firstPage-btn">first</button>
                                 <button id="prevPage-btn">prev</button>
-                                <button>1</button>
-                                <button>2</button>
-                                <button>3</button>
-                                <button>4</button>
-                                <button>5</button>
+                                <div id="page-numbers" class="page-numbers"></div>
                                 <button id="nextPage-btn">next</button>
                                 <button id="lastPage-btn">last</button>
                             </div>

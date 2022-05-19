@@ -29,11 +29,11 @@
         
         var records = [];
         var page = 1;
-        const MAX_VISIBLE_PAGES = 10;
+        const MAX_VISIBLE_PAGES = 5;
         // get total pages
         var page_count = 0; 
         function insertRecords(arr){
-            for(let i = 1; i <= 1000; i++){
+            for(let i = 1; i <= 17; i++){
                 arr.push("item "+ i);
             }
 
@@ -66,31 +66,36 @@
         function paginationButtons(dataSource, totalPages, currentPage, maxPages){
             const pagination_buttons = document.getElementById("pagination-buttons");
 
-            pages = pageRange(totalPages, maxPages);
-
+            let pages = pageRange(totalPages, maxPages);
+            console.log(pages);
             // clear prev page range
             while(pagination_buttons.firstChild){
                 pagination_buttons.removeChild(pagination_buttons.firstChild);
             }
-
+            
             for(let i = 0; i < pages.length; i++){
-
-                if(page == pages[i]){
+                console.log(pages[i])
+                if(pages[i] < 1){
+                    continue;
+                }else{
+                    if(page == pages[i]){
                     const button_pageNumber_el = document.createElement("button");
                     button_pageNumber_el.value = pages[i];
                     button_pageNumber_el.className = "page active";
                     button_pageNumber_el.textContent = pages[i];
 
                     pagination_buttons.appendChild(button_pageNumber_el);
-                }else{
+                    }else{
 
-                    const button_pageNumber_el = document.createElement("button");
-                    button_pageNumber_el.value = pages[i];
-                    button_pageNumber_el.className = "page";
-                    button_pageNumber_el.textContent = pages[i];
+                        const button_pageNumber_el = document.createElement("button");
+                        button_pageNumber_el.value = pages[i];
+                        button_pageNumber_el.className = "page";
+                        button_pageNumber_el.textContent = pages[i];
 
-                    pagination_buttons.appendChild(button_pageNumber_el);
+                        pagination_buttons.appendChild(button_pageNumber_el);
+                    }
                 }
+                
             }
 
 

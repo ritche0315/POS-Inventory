@@ -225,6 +225,7 @@ body {
   -ms-grid-column: 2;
   grid-area: mc;
   overflow-y: auto;
+  overflow-x: auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 60px 3fr;
@@ -383,17 +384,25 @@ body {
 
 .main-content .row-2 .container .row-3 {
   margin: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main-content .row-2 .container .row-3 .wrapper {
   border: solid 1px #CFD8DC;
-  height: 400px;
+  height: auto;
   background-color: white;
-  overflow: auto;
+  overflow-x: auto;
+  border: solid 1px;
+  width: 100%;
 }
 
 .main-content .row-2 .container .row-3 .wrapper #table-product {
-  table-layout: fixed;
+  table-layout: auto;
   border-collapse: collapse;
   width: 100%;
   text-align: center;
@@ -412,6 +421,8 @@ body {
 
 .main-content .row-2 .container .row-3 .wrapper #table-product thead th {
   font-size: 1.7rem;
+  padding: 5px;
+  margin: 10px;
 }
 
 .main-content .row-2 .container .row-3 .wrapper #table-product tbody td {
@@ -451,7 +462,7 @@ body {
       flex-basis: 50%;
 }
 
-.main-content .row-2 .container .row-4 .item-2 #pagination-numbers {
+.main-content .row-2 .container .row-4 .item-2 #pagination {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -463,33 +474,64 @@ body {
           justify-content: flex-end;
 }
 
-.main-content .row-2 .container .row-4 .item-2 #pagination-numbers :nth-child(n) {
-  min-width: 50px;
-  height: 32px;
+.main-content .row-2 .container .row-4 .item-2 #pagination :nth-child(1) {
   font-size: 1.7rem;
+  height: 32px;
+  margin: 0 3px;
+  padding: 5px;
+  border: none;
   color: #1565c0;
   cursor: pointer;
-  border: none;
 }
 
-.main-content .row-2 .container .row-4 .item-2 #pagination-numbers :nth-child(n + 3) {
+.main-content .row-2 .container .row-4 .item-2 #pagination :nth-child(2) {
+  font-size: 1.7rem;
+  height: 32px;
+  margin: 0 3px;
+  padding: 5px;
+  border: none;
+  color: #1565c0;
+  cursor: pointer;
+}
+
+.main-content .row-2 .container .row-4 .item-2 #pagination .page-numbers :nth-child(n) {
   min-width: 32px;
   height: 32px;
+  font-size: 1.7rem;
+  padding: 5px;
+  border: none;
+  color: #1565c0;
+  cursor: pointer;
 }
 
-.main-content .row-2 .container .row-4 .item-2 #pagination-numbers :nth-child(n + 8) {
-  min-width: 50px;
+.main-content .row-2 .container .row-4 .item-2 #pagination .page-numbers :nth-child(n):hover {
+  background-color: #0D47A1;
+  color: white;
+}
+
+.main-content .row-2 .container .row-4 .item-2 #pagination .page-numbers .active {
+  background-color: #0D47A1;
+  color: white;
+}
+
+.main-content .row-2 .container .row-4 .item-2 #pagination :nth-child(4) {
+  font-size: 1.7rem;
   height: 32px;
+  margin: 0 3px;
+  padding: 5px;
+  border: none;
+  color: #1565c0;
+  cursor: pointer;
 }
 
-.main-content .row-2 .container .row-4 .item-2 #pagination-numbers :nth-child(n):hover {
-  color: white;
-  background-color: #0D47A1;
-}
-
-.main-content .row-2 .container .row-4 .item-2 #pagination-numbers .active {
-  background-color: #0D47A1;
-  color: white;
+.main-content .row-2 .container .row-4 .item-2 #pagination :nth-child(5) {
+  font-size: 1.7rem;
+  height: 32px;
+  margin: 0 3px;
+  padding: 5px;
+  border: none;
+  color: #1565c0;
+  cursor: pointer;
 }
 
 .footer {
