@@ -4,16 +4,15 @@ var tableBody = document.querySelector("#table-product > tbody");
 
 var records = [];
 var page = 1;
-var max_visible_pages = 0;
-var page_count = 0; 
+var max_visible_pages = 5;
+var page_count = 0;
 window.addEventListener("load", populateTable);
 
 // Populate Table
 function populateTable() {
   getTableColumns();
   getTableRows();
-  max_visible_pages = parseInt(setRowsPerPage());
-  console.log(max_visible_pages)
+  setRowsPerPage();
 }
 
 function getTableColumns() {
@@ -89,14 +88,12 @@ function paginationButtons(totalPages, maxPages){
   const pagination_buttons = document.getElementById("page-numbers");
 
   pages = pageRange(totalPages, maxPages);
-  console.log("page length=",pages.length)
   // clear prev page range
   while(pagination_buttons.firstChild){
       pagination_buttons.removeChild(pagination_buttons.firstChild);
   }
 
   for(let i = 0; i < pages.length; i++){
-    
     if(pages[i] < 1){
         continue;
     }
@@ -120,7 +117,8 @@ function paginationButtons(totalPages, maxPages){
       }
     }
 
-    console.log(pages[i])
+
+
   }
 
 
@@ -131,6 +129,7 @@ function paginationButtons(totalPages, maxPages){
       page_number_btn[i].addEventListener("click", function(){
           // removeClass();
           page = parseInt(page_number_btn[i].value);
+
           displayList(records, page, max_visible_pages);
           paginationButtons(page_count, max_visible_pages);
       });
@@ -203,13 +202,14 @@ function displayList(dataSource, currentPage, records_per_page){
 
   let start = currentPage * records_per_page;
   let end = start + records_per_page;
+  
   let html = ``;
-  let rowCount = 1;
-
   for(let i = start; i < end; i++){
       if(dataSource[i] == undefined){
           break;
       }
+
+      let rowCount = i+1;
       html += `<tr>
               <td>`+rowCount+`</td>
               <td>`+dataSource[i].prod_id+`</td>
@@ -227,12 +227,19 @@ function displayList(dataSource, currentPage, records_per_page){
               <td>`+dataSource[i].prod_status+`</td>
               <td></td>
               </tr>`;
-    rowCount++;
-    
-  console.log(dataSource[i]);
+
   }
   
   tableBody.innerHTML = html;
+
+  
+    // display showing entries from - to
+    const entries_el = document.getElementById("entries");
+    entries_el.textContent = "Showing "+(start+1)+"-"+(end);
+    const total_entries_el = document.getElementById("total-entries");
+    if(records.length > 0){
+      total_entries_el.textContent = "of "+records.length+" entries";
+    }
 
 }
 
@@ -241,18 +248,13 @@ function displayList(dataSource, currentPage, records_per_page){
 
 function setRowsPerPage(){
   const cmb_entries_el = document.getElementById("cmb-entries");
-  let defaultSelection = cmb_entries_el.value;
-
-  cmb_entries_el.addEventListener("click", function(){
-    let valSelectedIndex = cmb_entries_el.selectedIndex;
-    max_visible_pages = parseInt(cmb_entries_el[valSelectedIndex].value);
-    console.log(max_visible_pages);
-    displayList(records, page, max_visible_pages);
-    paginationButtons(page_count, max_visible_pages);
+  cmb_entries_el.addEventListener("change", function(){
+        max_visible_pages = parseInt(cmb_entries_el.value);
+        getTableRows();
+        displayList(records, page, max_visible_pages);
+        paginationButtons(page_count, max_visible_pages);
   });
-  return defaultSelection;
 }
-
 // HELPER FUNCTIONS
 function helperAJAXrequest(method, url, data, type) {
 
