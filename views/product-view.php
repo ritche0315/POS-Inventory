@@ -123,11 +123,20 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                                 <option value="20">20</option>
                             </select>
                         </div>
-
                         <div class="container-2">
+                            <button id="addNew_btn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                New
+                            </button>
+                            <button id="category_btn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                Category
+                            </button>
+                        </div>
+                        <div class="container-3">
                             <div class="search-wrapper">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" placeholder="Search for product information">
+                                <input type="text" id="search" placeholder="Search for product information">
                             </div>
                         </div>
                     </div>

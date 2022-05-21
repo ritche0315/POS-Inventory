@@ -283,8 +283,8 @@ body {
 .main-content .row-2 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 8rem 8rem 1fr 8rem;
-      grid-template-rows: 8rem 8rem 1fr 8rem;
+  -ms-grid-rows: 8rem 13rem 1fr 8rem;
+      grid-template-rows: 8rem 13rem 1fr 8rem;
   border-top: solid 1px #CFD8DC;
   border-bottom: solid 1px #CFD8DC;
 }
@@ -323,8 +323,8 @@ body {
 }
 
 .main-content .row-2 .container .row-2 .container-1 {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
 }
 
 .main-content .row-2 .container .row-2 .container-1 :nth-child(n) {
@@ -339,6 +339,53 @@ body {
 }
 
 .main-content .row-2 .container .row-2 .container-2 {
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main-content .row-2 .container .row-2 .container-2 :nth-child(n) {
+  padding: 5px;
+  width: 100%;
+  max-width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.7rem;
+  border: solid 1px #1565c0;
+  border-radius: 12px;
+  color: #1565c0;
+  -webkit-transition: 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.main-content .row-2 .container .row-2 .container-2 :nth-child(n) :nth-child(1) {
+  -ms-flex-preferred-size: 5%;
+      flex-basis: 5%;
+  font-size: 20px;
+  border: none;
+}
+
+.main-content .row-2 .container .row-2 .container-2 :nth-child(n):hover {
+  background-color: #1565c0;
+  color: white;
+  cursor: pointer;
+}
+
+.main-content .row-2 .container .row-2 .container-2 :nth-child(n):hover :nth-child(1) {
+  color: white;
+}
+
+.main-content .row-2 .container .row-2 .container-3 {
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
   display: -webkit-box;
@@ -349,7 +396,7 @@ body {
           justify-content: flex-end;
 }
 
-.main-content .row-2 .container .row-2 .container-2 .search-wrapper {
+.main-content .row-2 .container .row-2 .container-3 .search-wrapper {
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -364,21 +411,21 @@ body {
   border: solid 1px #CFD8DC;
 }
 
-.main-content .row-2 .container .row-2 .container-2 .search-wrapper :nth-child(1) {
+.main-content .row-2 .container .row-2 .container-3 .search-wrapper :nth-child(1) {
   font-size: 15px;
   padding: 5px;
   color: #546E7A;
   margin-right: 5px;
 }
 
-.main-content .row-2 .container .row-2 .container-2 .search-wrapper :nth-child(2) {
+.main-content .row-2 .container .row-2 .container-3 .search-wrapper :nth-child(2) {
   border: none;
   font-size: 1.7rem;
   padding: 5px;
   width: 100%;
 }
 
-.main-content .row-2 .container .row-2 .container-2 .search-wrapper :placeholder-shown {
+.main-content .row-2 .container .row-2 .container-3 .search-wrapper :placeholder-shown {
   font-style: italic;
 }
 
@@ -393,11 +440,12 @@ body {
 }
 
 .main-content .row-2 .container .row-3 .wrapper {
-  border: solid 1px #CFD8DC;
   height: auto;
   background-color: white;
   overflow-x: auto;
-  border: solid 1px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid #F5F5F5;
   width: 100%;
 }
 
@@ -410,13 +458,8 @@ body {
 
 .main-content .row-2 .container .row-3 .wrapper #table-product thead {
   background-color: #1565c0;
-  height: 50px;
+  height: 40px;
   color: white;
-}
-
-.main-content .row-2 .container .row-3 .wrapper #table-product thead {
-  background-color: #1565c0;
-  height: 30px;
 }
 
 .main-content .row-2 .container .row-3 .wrapper #table-product thead th {
@@ -427,11 +470,22 @@ body {
 
 .main-content .row-2 .container .row-3 .wrapper #table-product tbody td {
   font-size: 1.7rem;
-  padding: 5px;
+  padding: 10px 0;
 }
 
 .main-content .row-2 .container .row-3 .wrapper #table-product tbody tr {
-  border-bottom: solid 1px #78909C;
+  border-bottom: solid 1px #1565c0;
+}
+
+.main-content .row-2 .container .row-3 .wrapper #table-product tbody tr #edit_btn {
+  font-size: 20px;
+  color: #1565c0;
+  margin: 0 5px;
+}
+
+.main-content .row-2 .container .row-3 .wrapper #table-product tbody tr #delete_btn {
+  font-size: 20px;
+  color: #D32F2F;
 }
 
 .main-content .row-2 .container .row-3 .wrapper #table-product tbody tr:hover {

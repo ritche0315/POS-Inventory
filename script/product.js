@@ -13,6 +13,32 @@ function populateTable() {
   getTableColumns();
   getTableRows();
   setRowsPerPage();
+  searchProduct();
+}
+
+function searchProduct(){
+  const search_input_el = document.getElementById("search");
+  search_input_el.addEventListener("keyup", function(){
+
+    if(search_input_el.value == ""){
+      // refresh table
+      getTableRows();
+    }
+    let req = helperAJAXrequest("GET", "../controllers/product-controller.php?prod="+search_input_el.value, null, true); 
+
+    req.onload = function(){
+      if(req.status == 200){
+        let serverResponse = JSON.parse(req.response);
+        records = serverResponse;
+        console.log(records)
+        page_count = Math.ceil(records.length / max_visible_pages);
+
+        displayList(records, page, max_visible_pages);
+        paginationButtons(page_count, max_visible_pages);
+      }
+    }
+
+  });
 }
 
 function getTableColumns() {
@@ -81,19 +107,21 @@ function pageRange(totalPages, maxVisiblePage){
 
 
   let from = to - maxVisiblePage;
-  return Array.from({length:maxVisiblePage}, (_, i) => (i + 1) + from);
+  return Array.from({length:maxVisiblePage}, (_, i) => (i+1) + from);
 
 }
 function paginationButtons(totalPages, maxPages){
   const pagination_buttons = document.getElementById("page-numbers");
 
-  pages = pageRange(totalPages, maxPages);
+  let pages = pageRange(totalPages, maxPages);
   // clear prev page range
   while(pagination_buttons.firstChild){
       pagination_buttons.removeChild(pagination_buttons.firstChild);
   }
-
+  
   for(let i = 0; i < pages.length; i++){
+    
+    console.log(i)
     if(pages[i] < 1){
         continue;
     }
@@ -225,7 +253,10 @@ function displayList(dataSource, currentPage, records_per_page){
               <td>`+dataSource[i].prod_reorder_lvl+`</td>
               <td>`+dataSource[i].prod_drawer_No+`</td>
               <td>`+dataSource[i].prod_status+`</td>
-              <td></td>
+              <td>
+                <i class="fa-solid fa-square-pen" id='edit_btn'></i>
+                <i class="fa-solid fa-trash-can" id='delete_btn'></i>
+              </td>
               </tr>`;
 
   }
@@ -249,10 +280,10 @@ function displayList(dataSource, currentPage, records_per_page){
 function setRowsPerPage(){
   const cmb_entries_el = document.getElementById("cmb-entries");
   cmb_entries_el.addEventListener("change", function(){
-        max_visible_pages = parseInt(cmb_entries_el.value);
+        max_visible_pages = parseInt(cmb_entries_el[cmb_entries_el.selectedIndex].value);
         getTableRows();
-        displayList(records, page, max_visible_pages);
-        paginationButtons(page_count, max_visible_pages);
+        page = 1;
+        console.log("page=", page, " page_count=",page_count, " max_visible=", max_visible_pages)
   });
 }
 // HELPER FUNCTIONS

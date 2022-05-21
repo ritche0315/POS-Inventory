@@ -49,6 +49,21 @@ class Product extends Queries{
       
     }
 
+
+    public function searchProduct($search_item){
+
+        $q = new Queries();
+        $sql = "SELECT A.prod_id as 'prod_id', A.barcode as 'prod_barcode', A.name as 'prod_name', A.description 
+        as 'prod_desc', B.description as 'prod_category', A.unit as 'prod_unit', A.price1 as 'prod_price1', 
+        A.price2 as 'prod_price2', A.price3 as 'prod_price3', A.qty as 'prod_qty', A.reorderlvl as 'prod_reorder_lvl', 
+        A.drawerNo as 'prod_drawer_No', A.pstatus as 'prod_status' FROM tblproduct A  INNER JOIN tblproductcategory B 
+        ON A.cat_id = B.cat_id WHERE A.prod_id = '$search_item' or A.name = '$search_item' ORDER BY A.prod_id ASC";
+
+       
+        echo  json_encode($q->selectRecord($sql));
+      
+    }
+
    
     
    
