@@ -588,6 +588,79 @@ body {
   cursor: pointer;
 }
 
+.main-content .insert-modal {
+  width: 100%;
+  max-width: 600px;
+  margin: 10rem auto;
+  border-top: solid 6px #1565c0;
+  -webkit-animation: modal_animation 0.4s;
+          animation: modal_animation 0.4s;
+}
+
+.main-content .insert-modal form {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main-content .insert-modal form .row-1 p {
+  font-size: 3rem;
+  margin: 2rem auto;
+}
+
+.main-content .insert-modal form .row-2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.2fr 1fr;
+      grid-template-columns: 0.2fr 1fr;
+  margin: 2rem;
+}
+
+.main-content .insert-modal form .row-2 :nth-child(n) {
+  font-size: 1.7rem;
+  padding: 3px 0;
+  margin: 0.3rem 0;
+}
+
+.main-content .insert-modal form .row-3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem;
+}
+
+.main-content .insert-modal form .row-3 :nth-child(n) {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.7rem;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 1rem;
+}
+
+.main-content .insert-modal form .row-3 :nth-child(1) {
+  background-color: #D32F2F;
+}
+
+.main-content .insert-modal form .row-3 :nth-child(2) {
+  background-color: #1565c0;
+}
+
 .footer {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
@@ -728,6 +801,28 @@ body {
   to {
     -ms-grid-columns: .5fr 2fr;
         grid-template-columns: .5fr 2fr;
+  }
+}
+
+@-webkit-keyframes modal_animation {
+  from {
+    top: -10rem;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes modal_animation {
+  from {
+    top: -10rem;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=product.css.map */

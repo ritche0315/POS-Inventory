@@ -14,6 +14,7 @@ function populateTable() {
   getTableRows();
   setRowsPerPage();
   searchProduct();
+  modal();
 }
 
 function searchProduct(){
@@ -286,6 +287,22 @@ function setRowsPerPage(){
         console.log("page=", page, " page_count=",page_count, " max_visible=", max_visible_pages)
   });
 }
+
+// modals
+function modal(){
+  const addNew_btn_el = document.getElementById("addNew_btn");
+  addNew_btn_el.addEventListener("click", function(){
+    const insert_modal = document.getElementById("insert-modal");
+    insert_modal.showModal();
+
+    const close_btn_el = document.getElementById("close_btn");
+    close_btn_el.addEventListener("click", function(){
+      insert_modal.close();
+    });
+  });
+}
+
+// end of the insert modal code
 // HELPER FUNCTIONS
 function helperAJAXrequest(method, url, data, type) {
 
@@ -300,3 +317,4 @@ function helperAJAXrequest(method, url, data, type) {
   xhr.send();
   return xhr;
 }
+

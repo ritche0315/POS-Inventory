@@ -132,7 +132,10 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                                 <i class="fa-solid fa-circle-plus"></i>
                                 Category
                             </button>
+                            
                         </div>
+                        
+                
                         <div class="container-3">
                             <div class="search-wrapper">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -169,7 +172,13 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                     </div>
                 </div>
             </div>
+
+            <!-- MODALS -->
+                
+            <?php include '../views/insert-product-modal.php'?>
+
         </div>
+        
         
 
         <div class="footer">
@@ -185,5 +194,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
             </div>
         </div>
    </div>
+
+
 </body>
 </html>

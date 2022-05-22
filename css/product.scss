@@ -500,7 +500,62 @@ body{
         
     }
 
-    
+    // MODALS
+    .insert-modal{
+        width: 100%;
+        max-width: 600px;
+        margin: 10rem auto;
+
+        border-top: solid 6px $primaryColor1;
+        animation: modal_animation 0.4s;
+        form{
+            width:100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            .row-1{
+                p{
+                    font-size: 3rem;
+                    margin: 2rem auto;
+                }
+            }
+            .row-2{
+                display: grid;
+                grid-template-columns: 0.2fr 1fr;
+                margin: 2rem;
+                :nth-child(n){
+                    font-size: 1.7rem;
+                    padding: 3px 0;
+                    margin: 0.3rem 0;
+                }
+            }
+
+            .row-3{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 2rem;
+                :nth-child(n){
+                    border: none;
+                    border-radius: 5px;
+                    padding: 10px;
+                    font-size: 1.7rem;
+                    color: white;
+                    cursor: pointer;
+                    width:100%;
+                    max-width: 150px;
+                    margin: 0 1rem;
+                }
+                :nth-child(1){
+                    background-color: $primaryColor8;
+                }
+                :nth-child(2){
+                    background-color: $primaryColor1;
+                }
+            }
+            
+        }
+    }
 }
 
 .footer{
@@ -590,5 +645,17 @@ body{
 
     to{
         grid-template-columns: .5fr 2fr;
+    }
+}
+
+@keyframes modal_animation {
+    from{
+        top: -10rem;
+        opacity: 0;
+    }
+
+    to{
+        top: 0;
+        opacity: 1;
     }
 }
