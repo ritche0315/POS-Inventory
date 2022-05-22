@@ -591,10 +591,13 @@ body {
 .main-content .insert-modal {
   width: 100%;
   max-width: 600px;
-  margin: 10rem auto;
+  margin: 13rem auto;
   border-top: solid 6px #1565c0;
   -webkit-animation: modal_animation 0.4s;
           animation: modal_animation 0.4s;
+  border: none;
+  -webkit-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.2), -1px -1px 5px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.2), -1px -1px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .main-content .insert-modal form {
@@ -659,6 +662,24 @@ body {
 
 .main-content .insert-modal form .row-3 :nth-child(2) {
   background-color: #1565c0;
+}
+
+.main-content .insert-modal form .insert_success {
+  background-color: #69F0AE;
+  border: solid 1px #00E676;
+  font-size: 1.7rem;
+  text-align: center;
+  padding: 10px;
+  margin: 1rem;
+  display: none;
+}
+
+.main-content .insert-modal::-webkit-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.main-content .insert-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .footer {
@@ -806,23 +827,23 @@ body {
 
 @-webkit-keyframes modal_animation {
   from {
-    top: -10rem;
     opacity: 0;
+    top: -10rem;
   }
   to {
-    top: 0;
     opacity: 1;
+    top: 0;
   }
 }
 
 @keyframes modal_animation {
   from {
-    top: -10rem;
     opacity: 0;
+    top: -10rem;
   }
   to {
-    top: 0;
     opacity: 1;
+    top: 0;
   }
 }
 /*# sourceMappingURL=product.css.map */

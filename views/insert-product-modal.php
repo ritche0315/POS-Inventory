@@ -1,11 +1,11 @@
 <dialog class="insert-modal" id="insert-modal">
-    <form onsubmit="return false">
+    <form onsubmit="return false" id="form">
         <div class="row-1">
             <p>Add New Product</p>
         </div>
-        <div class="row-2">
-            <label for="prod-id">ID No.</label>
-            <input type="text" id="prod-id">
+        <div class="row-2 form-input-fields">
+            <label for="prod-id" class="prod_id">ID No.</label>
+            <input type="text" id="prod-id" class="prod_id">
             <label for="prod-barcode">Barcode</label>
             <input type="text" id="prod-barcode">
             <label for="prod-name">Name</label>
@@ -13,7 +13,9 @@
             <label for="prod_desc">Description</label>
             <input type="text" id="prod-desc">
             <label for="select-category">Category</label>
-            <select id="select-category"></select>
+            <select id="select-category">
+                <option value="0">select category</option>
+            </select>
             <label for="prod-unit">Unit</label>
             <input type="text" id="prod-unit">
             <label for="prod-price1">Price 1</label>
@@ -38,6 +40,10 @@
         <div class="row-3">
             <button id="close_btn">CLOSE</button>
             <button id="save_btn">SAVE</button>
+        </div>
+
+        <div class="insert_success">
+
         </div>
     </form>
 </dialog>

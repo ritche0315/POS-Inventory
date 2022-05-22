@@ -16,6 +16,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
     <title>Admin Page</title>
     <script src="../script/product.js" defer></script>
     <script src="../script/all.js" defer></script>
+    <script src="../script/product-crud.js" defer></script>
 </head>
 <body>
    <div class="main">

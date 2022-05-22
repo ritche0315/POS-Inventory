@@ -15,6 +15,7 @@ function populateTable() {
   setRowsPerPage();
   searchProduct();
   modal();
+  populateSelectCategory();
 }
 
 function searchProduct(){
@@ -292,11 +293,21 @@ function setRowsPerPage(){
 function modal(){
   const addNew_btn_el = document.getElementById("addNew_btn");
   addNew_btn_el.addEventListener("click", function(){
+
+    // hide id number field
+    const prod_id_el = document.getElementsByClassName("prod_id");
+    for(let i = 0; i < prod_id_el.length; i++){
+      prod_id_el[i].style.display = "none";
+    }
+
     const insert_modal = document.getElementById("insert-modal");
     insert_modal.showModal();
 
     const close_btn_el = document.getElementById("close_btn");
     close_btn_el.addEventListener("click", function(){
+      const insert_success = document.querySelector(".insert_success");
+      insert_success.style.display = "none";
+      form_el.reset();
       insert_modal.close();
     });
   });

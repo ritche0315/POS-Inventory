@@ -65,7 +65,23 @@ class Product extends Queries{
     }
 
    
-    
+    public function getCategories(){
+        $q = new Queries();
+        $sql = "SELECT * FROM tblproductcategory";
+
+        echo json_encode($q->selectRecord($sql));
+    }
+
+    public function insertProduct(){
+        $q = new Queries();
+        $sql = "INSERT INTO tblproduct(barcode, name, description, cat_id, unit, price1, price2, 
+        price3, qty, reorderlvl, drawerNo, pstatus)VALUES('$this->prodBarcode', '$this->prodName', 
+        '$this->prodDesc','$this->prodCategory', '$this->prodUnit', '$this->prodPrice1', '$this->prodPrice2', 
+        '$this->prodPrice3','$this->prodQuantity','$this->prodReorder', '$this->prodDrawerNo', 
+        '$this->prodStatus')";
+
+        echo $q->insertRecord($sql);
+    }
    
 }
 
