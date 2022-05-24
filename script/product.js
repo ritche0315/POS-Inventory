@@ -307,6 +307,11 @@ function modal(){
     close_btn_el.addEventListener("click", function(){
       const insert_success = document.querySelector(".insert_success");
       insert_success.style.display = "none";
+      for(let i=0; i < form_group.length; i++){
+        form_group[i].style.backgroundColor = "white";
+        form_group[i].style.borderColor = border_base_color;
+        form_group[i].placeholder = '';
+      }
       form_el.reset();
       insert_modal.close();
     });

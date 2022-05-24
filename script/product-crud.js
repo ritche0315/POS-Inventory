@@ -11,7 +11,14 @@ const prod_qty= document.getElementById("prod-qty");
 const prod_reorder_lvl= document.getElementById("prod-reorder-lvl");
 const prod_drawer_no= document.getElementById("prod-drawer-no");
 const prod_status = document.getElementById("select-status");
+
 const form_el = document.getElementById("form");
+let form_group = document.getElementsByClassName("form-group-fields");
+
+
+var warning_bg_color = "#FFCDD2";
+var warning_border_color = "#D32F2F";
+var border_base_color = "#78909C";
 
 function populateSelectCategory(){
     const req = helperAJAXrequest("GET", "../controllers/product-controller.php?cat=categories", null, true);
@@ -55,157 +62,59 @@ function insertProduct(){
 // VALIDATION
 
 function formValidate(action){
-    var validateEmpty = [];
-    var validateNumbers = [];
+    var isError = false;
 
     if(action == "insert"){
-        if(prod_barcode.value == ''){
-            validateEmpty.push("Barcode");
+        for (let i = 0; i < form_group.length; i++) {
+            if(form_group[i].value == '' || form_group[i].value == 0){
+                isError = true;
+                form_group[i].style.backgroundColor = warning_bg_color;
+                form_group[i].style.borderColor = warning_border_color;
+                form_group[i].placeholder = 'This field is required!';
+                if(form_group[i].tagName === "SELECT"){
+                    form_group[i][form_group[i].selectedIndex].innerHTML = "Please select a category!";
+                }
+            }else{
+                isError = false;
+                form_group[i].style.backgroundColor = 'white';
+                form_group[i].style.borderColor = border_base_color;
+            }
         }
-        if(prod_name.value == ''){
-            validateEmpty.push("Product Name");
-        }
-        if(prod_desc.value == ''){
-            validateEmpty.push("Description");
-        }
-        if(prod_select_category[prod_select_category.selectedIndex].value == '0'){
-            validateEmpty.push("Category");
-        }
-        if(prod_unit.value == ''){
-            validateEmpty.push("Unit");
-        }
-        if(prod_price1.value == ''){
-            validateEmpty.push("Price1");
-        }
-        if(prod_price2.value == ''){
-            validateEmpty.push("Price2");
-        }
-        if(prod_price3.value == ''){
-            validateEmpty.push("Price3");
-        }
-        if(prod_qty.value == ''){
-            validateEmpty.push("Quantity");
-        }
-        if(prod_reorder_lvl.value == ''){
-            validateEmpty.push("Re-Order");
-        }
-        if(prod_drawer_no.value == ''){
-            validateEmpty.push("Drawer No.")
-        }
-        if(prod_status[prod_status.selectedIndex].value == '0'){
-            validateEmpty.push("status");
-        }
-        
-        if(isNaN(parseInt(prod_qty.value))){
-            validateNumbers.push("Quantity");
-        }
-        if(isNaN(parseInt(prod_price1.value))){
-            validateNumbers.push("Price1");
-        }
-        if(isNaN(parseInt(prod_price2.value))){
-            validateNumbers.push("Price2");
-        }
-        if(isNaN(parseInt(prod_price3.value))){
-            validateNumbers.push("Price3");
-        }
-        if(isNaN(parseInt(prod_reorder_lvl.value))){
-            validateNumbers.push("Re-Order");
-        }
-        
     }
     else if(action == "edit"){
-        if(prod_id.value == ''){
-            validateEmpty.push("Product ID");
-        }
-        if(prod_barcode.value == ''){
-            validateEmpty.push("Barcode");
-        }
-        if(prod_name.value == ''){
-            validateEmpty.push("Product Name");
-        }
-        if(prod_desc.value == ''){
-            validateEmpty.push("Description");
-        }
-        if(prod_select_category[prod_select_category.selectedIndex].value == '0'){
-            validateEmpty.push("Category");
-        }
-        if(prod_unit.value == ''){
-            validateEmpty.push("Unit");
-        }
-        if(prod_price1.value == ''){
-            validateEmpty.push("Price1");
-        }
-        if(prod_price2.value == ''){
-            validateEmpty.push("Price2");
-        }
-        if(prod_price3.value == ''){
-            validateEmpty.push("Price3");
-        }
-        if(prod_qty.value == ''){
-            validateEmpty.push("Quantity");
-        }
-        if(prod_reorder_lvl.value == ''){
-            validateEmpty.push("Re-Order");
-        }
-        if(prod_drawer_no.value == ''){
-            validateEmpty.push("Drawer No.")
-        }
-        if(prod_status[prod_status.selectedIndex].value == '0'){
-            validateEmpty.push("status");
-        }
-    }
-    else{
 
     }
-    
-    return {
-        "validateEmpty":validateEmpty,
-        "validateNumbers":validateNumbers
+    else{
+        //delete action 
     }
+    
+    return isError;
 }
 
 // SAVE FUNCTION
 const save_btn_el = document.getElementById("save_btn");
 save_btn_el.addEventListener("click", function(){
-    let validation = formValidate("insert");
-
+   
+    console.log(formValidate("insert"));
     // if no errors then insert ot database
-    if(validation.validateEmpty.length <= 0 && validation.validateNumbers.length <= 0){
-        let values = insertProduct();
-        const xhr = helperAJAXrequest("POST", "../controllers/product-controller.php", "insert="+values, true);
-        xhr.onload = function(){
-            if(xhr.status == 200){
-                if(parseInt(xhr.response) === 1){
-                    const insert_success = document.querySelector(".insert_success");
-                    insert_success.textContent = "Record successfully added to the database!";
-                    insert_success.style.display = "block";
-                    form_el.reset();
-                }
-            }
-        
-        }
-    }else{
-        let str = "";
-        //else then display the errors
-        if(validation.validateEmpty.length > 0){
-            str += "Please fill in all the requried fields ! \n\n EMPTY FIELDS: \n\n";
-            for(let i=0; i < validation.validateEmpty.length; i++){
-                str += "["+(i+1)+"] "+validation.validateEmpty[i] + " *\n";
-            }
-    
-        }
-        
-
-        if(validation.validateNumbers.length > 0){
-
-            str += "\n\nPlease enter valid number on these following fields: \n\n";
-            for(let i=0; i < validation.validateNumbers.length; i++){
-                str += "["+(i+1)+"] "+validation.validateNumbers[i] + " *\n";
-            }
-        }
-        
-        alert(str)
-    }
-    
+        // if(!formValidate("insert")){
+        //     let values = insertProduct();
+        //     const xhr = helperAJAXrequest("POST", "../controllers/product-controller.php", "insert="+values, true);
+        //     xhr.onload = function(){
+        //         if(xhr.status == 200){
+        //             if(parseInt(xhr.response) === 1){
+        //                 const insert_success = document.querySelector(".insert_success");
+        //                 insert_success.textContent = "Record successfully added to the database!";
+        //                 insert_success.style.display = "block";
+        //                  // hide popup insertion success message in 3s.
+        //                 setTimeout(() => {
+        //                     insert_success.style.display = "none";
+        //                 }, 3000);
+        //                 form_el.reset();
+        //             }
+        //         }
+            
+        //     }
+        // }
 });
 
