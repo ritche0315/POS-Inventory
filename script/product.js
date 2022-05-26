@@ -21,26 +21,35 @@ function populateTable() {
 function searchProduct(){
   const search_input_el = document.getElementById("search");
   search_input_el.addEventListener("keyup", function(){
-
-    if(search_input_el.value == ""){
-      // refresh table
-      getTableRows();
-    }
+   
     let req = helperAJAXrequest("GET", "../controllers/product-controller.php?prod="+search_input_el.value, null, true); 
 
     req.onload = function(){
       if(req.status == 200){
-        let serverResponse = JSON.parse(req.response);
-        records = serverResponse;
-        console.log(records)
-        page_count = Math.ceil(records.length / max_visible_pages);
-
-        displayList(records, page, max_visible_pages);
-        paginationButtons(page_count, max_visible_pages);
+        try {
+          if(search_input_el.value === ''){
+            // refresh table
+            getTableRows();
+          }
+          let serverResponse = JSON.parse(req.response);
+          records = serverResponse;
+          page_count = Math.ceil(records.length / max_visible_pages);
+    
+          displayList(records, page, max_visible_pages);
+          paginationButtons(page_count, max_visible_pages);
+        } catch (e) {
+          tableBody.innerHTML = "";
+          const entries_el = document.getElementById("entries");
+          const total_entries_el = document.getElementById("total-entries");
+          entries_el.innerHTML = "";
+          total_entries_el.innerHTML = "Data Not Found!";
+          }
+        
       }
     }
-
+    
   });
+
 }
 
 function getTableColumns() {
@@ -122,8 +131,6 @@ function paginationButtons(totalPages, maxPages){
   }
   
   for(let i = 0; i < pages.length; i++){
-    
-    console.log(i)
     if(pages[i] < 1){
         continue;
     }
@@ -337,17 +344,6 @@ function modal(){
 
 }
 
-function test(td){
-  let selectedTd = td;
-  // if(selectedTd.className == "edit-btn"){
-  //   console.log("edit button clicked!")
-  // }
-  if(selectedTd.matches('edit-btn')){
-    console.log("found")
-    console.log(td);
-  }
-
-}
 
 // end of the insert modal code
 // HELPER FUNCTIONS
