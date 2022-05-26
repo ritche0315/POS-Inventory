@@ -256,8 +256,8 @@ function displayList(dataSource, currentPage, records_per_page){
               <td>`+dataSource[i].prod_drawer_No+`</td>
               <td>`+dataSource[i].prod_status+`</td>
               <td>
-                <i class="fa-solid fa-square-pen" id='edit_btn'></i>
-                <i class="fa-solid fa-trash-can" id='delete_btn'></i>
+                <i class="fa-solid fa-square-pen edit-btn"></i>
+                <i class="fa-solid fa-trash-can delete-btn"></i>
               </td>
               </tr>`;
 
@@ -291,35 +291,86 @@ function setRowsPerPage(){
 
 // modals
 function modal(){
+  
+    // (1) ADD BUTTON
+
   const addNew_btn_el = document.getElementById("addNew_btn");
   addNew_btn_el.addEventListener("click", function(){
-
-    // hide id number field
+    // set action to insert
+    action = "insert";
+    // hide id number field and label
     const prod_id_el = document.getElementsByClassName("prod_id");
     for(let i = 0; i < prod_id_el.length; i++){
       prod_id_el[i].style.display = "none";
     }
-
     const insert_modal = document.getElementById("insert-modal");
     insert_modal.showModal();
-
+    // close modal
     const close_btn_el = document.getElementById("close_btn");
     close_btn_el.addEventListener("click", function(){
-      const insert_success = document.querySelector(".insert_success");
-      insert_success.style.display = "none";
-      for(let i=0; i < form_group.length; i++){
-        form_group[i].style.backgroundColor = "white";
-        form_group[i].style.borderColor = border_base_color;
-        form_group[i].placeholder = '';
-      }
-      form_el.reset();
+      
+      resetForm();
       insert_modal.close();
     });
   });
+
+
+  // (2) EDIT BUTTON/ ICON
+  tableBody.onclick = function(e){
+    var tgt = e.target;
+    var cur = e.currentTarget;
+    var Rows = cur.rows;
+    console.log(tgt)
+    console.log(cur)
+    console.log(Rows)
+
+    if (tgt !== cur && tgt.matches('.edit-btn')) {
+        for (let i = 0; i < Rows.length; i++) {
+            if (Rows[i].contains(tgt)) {
+                console.log(Rows[i].cells[0].innerText)
+            }
+        }
+    }
+  }
+
+
+
+}
+
+function test(td){
+  let selectedTd = td;
+  // if(selectedTd.className == "edit-btn"){
+  //   console.log("edit button clicked!")
+  // }
+  if(selectedTd.matches('edit-btn')){
+    console.log("found")
+    console.log(td);
+  }
+
 }
 
 // end of the insert modal code
 // HELPER FUNCTIONS
+
+function resetForm(){
+   // reset / clear form
+   const insert_success = document.querySelector(".insert_success");
+  //  insert_success.style.display = "none";
+  for(let i=0; i < form_group.length; i++){
+    form_group[i].removeEventListener("keyup", styleValidation);
+  }
+  for(let i = 1; i < form_group.length; i++){
+      form_group[i].style.backgroundColor = "white";
+      form_group[i].style.borderColor = border_base_color;
+      form_group[i].style.color = "black";
+      form_group[i].placeholder = '';
+  }
+  // hide popup insertion success message in 3s.
+  setTimeout(() => {
+      insert_success.style.display = "none";
+  }, 3000);
+  form_el.reset();
+}
 function helperAJAXrequest(method, url, data, type) {
 
   const xhr = new XMLHttpRequest();

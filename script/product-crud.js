@@ -20,6 +20,7 @@ var warning_bg_color = "#FFCDD2";
 var warning_border_color = "#D32F2F";
 var border_base_color = "#78909C";
 
+var action = "";
 function populateSelectCategory(){
     const req = helperAJAXrequest("GET", "../controllers/product-controller.php?cat=categories", null, true);
     const select_category_el = document.getElementById("select-category");
@@ -39,7 +40,7 @@ function populateSelectCategory(){
 
 
 // CRUD
-function insertProduct(){
+function getInputValues(){
     let prod_info =
         {
             "prod_id":prod_id.value,
@@ -61,60 +62,126 @@ function insertProduct(){
 }
 // VALIDATION
 
-function formValidate(action){
-    var isError = false;
+function formValidate(action_crud){
+    var isValid = false;
 
-    if(action == "insert"){
-        for (let i = 0; i < form_group.length; i++) {
-            if(form_group[i].value == '' || form_group[i].value == 0){
-                isError = true;
-                form_group[i].style.backgroundColor = warning_bg_color;
-                form_group[i].style.borderColor = warning_border_color;
-                form_group[i].placeholder = 'This field is required!';
-                if(form_group[i].tagName === "SELECT"){
-                    form_group[i][form_group[i].selectedIndex].innerHTML = "Please select a category!";
+    // ADD product
+    if(action_crud == "insert"){
+        for(let i = 1; i < form_group.length; i++){
+            if(form_group[i].id == 'select-category'){
+                if(parseInt(form_group[i].value) == 0){
+                    isValid = true;
+                    form_group[i].style.backgroundColor = warning_bg_color;
+                    form_group[i].style.borderColor = warning_border_color;
+                    form_group[i].style.color = warning_border_color;
                 }
+
+                if(parseInt(form_group[i].value) != 0){
+                    form_group[i].style.backgroundColor = "white";
+                    form_group[i].style.borderColor = border_base_color;
+                    form_group[i].style.color = "black";
+                }   
             }else{
-                isError = false;
-                form_group[i].style.backgroundColor = 'white';
-                form_group[i].style.borderColor = border_base_color;
+                if(form_group[i].value == ''){
+                    isValid = true;
+                    form_group[i].style.backgroundColor = warning_bg_color;
+                    form_group[i].style.borderColor = warning_border_color;
+                    form_group[i].placeholder = 'This field is required';
+                    form_group[1].focus();
+                }   
             }
+
+            
+        }
+        
+        for(let i = 1; i < form_group.length; i++){
+            form_group[i].addEventListener("keyup", function(){styleValidation(1)});
         }
     }
-    else if(action == "edit"){
+    else if(action_crud == "edit"){
+        for(let i = 0; i < form_group.length; i++){
+            if(form_group[i].id == 'select-category'){
+                if(parseInt(form_group[i].value) == 0){
+                    isValid = true;
+                    form_group[i].style.backgroundColor = warning_bg_color;
+                    form_group[i].style.borderColor = warning_border_color;
+                    form_group[i].style.color = warning_border_color;
+                }
 
+                if(parseInt(form_group[i].value) != 0){
+                    form_group[i].style.backgroundColor = "white";
+                    form_group[i].style.borderColor = border_base_color;
+                    form_group[i].style.color = "black";
+                }   
+            }else{
+                if(form_group[i].value == ''){
+                    isValid = true;
+                    form_group[i].style.backgroundColor = warning_bg_color;
+                    form_group[i].style.borderColor = warning_border_color;
+                    form_group[i].placeholder = 'This field is required';
+                    form_group[1].focus();
+                }   
+            }
+
+            
+        }
+        for(let i = 1; i < form_group.length; i++){
+            form_group[i].addEventListener("keyup", function(){styleValidation(0)});
+        }
     }
     else{
-        //delete action 
+
     }
+
+
     
-    return isError;
+    return isValid;
+}
+
+function styleValidation(indexStart){
+    for(let i = indexStart; i < form_group.length; i++){
+        if(form_group[i].value == ''){
+            form_group[i].style.backgroundColor = warning_bg_color;
+            form_group[i].style.borderColor = warning_border_color;
+            form_group[i].placeholder = 'This field is required';
+            form_group[i].style.color = warning_border_color;
+        }else{
+            form_group[i].style.backgroundColor = "white";
+            form_group[i].style.borderColor = border_base_color;
+            form_group[i].style.color = "black";
+            form_group[i].placeholder = 'This field is required';
+        }
+    }
 }
 
 // SAVE FUNCTION
 const save_btn_el = document.getElementById("save_btn");
 save_btn_el.addEventListener("click", function(){
-   
-    console.log(formValidate("insert"));
+    console.log(formValidate(action))
     // if no errors then insert ot database
-        // if(!formValidate("insert")){
-        //     let values = insertProduct();
-        //     const xhr = helperAJAXrequest("POST", "../controllers/product-controller.php", "insert="+values, true);
-        //     xhr.onload = function(){
-        //         if(xhr.status == 200){
-        //             if(parseInt(xhr.response) === 1){
-        //                 const insert_success = document.querySelector(".insert_success");
-        //                 insert_success.textContent = "Record successfully added to the database!";
-        //                 insert_success.style.display = "block";
-        //                  // hide popup insertion success message in 3s.
-        //                 setTimeout(() => {
-        //                     insert_success.style.display = "none";
-        //                 }, 3000);
-        //                 form_el.reset();
-        //             }
-        //         }
-            
-        //     }
-        // }
+        if(!formValidate(action)){
+
+            if(action == "insert"){
+                let values = getInputValues();
+                const xhr = helperAJAXrequest("POST", "../controllers/product-controller.php", "insert="+values, true);
+                xhr.onload = function(){
+                    if(xhr.status == 200){
+                        if(parseInt(xhr.response) === 1){
+                            const insert_success = document.querySelector(".insert_success");
+                            insert_success.textContent = "Record successfully added to the database!";
+                            insert_success.style.display = "block";
+    
+                            resetForm();
+                        }
+                    }
+                
+                }
+            }else if(action == "edit"){
+
+            }else{
+
+            }
+           
+        }
 });
 

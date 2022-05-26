@@ -477,13 +477,13 @@ body {
   border-bottom: solid 1px #1565c0;
 }
 
-.main-content .row-2 .container .row-3 .wrapper #table-product tbody tr #edit_btn {
+.main-content .row-2 .container .row-3 .wrapper #table-product tbody tr .edit-btn {
   font-size: 20px;
   color: #1565c0;
   margin: 0 5px;
 }
 
-.main-content .row-2 .container .row-3 .wrapper #table-product tbody tr #delete_btn {
+.main-content .row-2 .container .row-3 .wrapper #table-product tbody tr .delete-btn {
   font-size: 20px;
   color: #D32F2F;
 }
@@ -627,7 +627,7 @@ body {
 
 .main-content .insert-modal form .row-2 :nth-child(n) {
   font-size: 1.7rem;
-  padding: 3px 0;
+  padding: 3px 3px;
   margin: 0.3rem 0;
   outline-color: #0D47A1;
 }

@@ -149,7 +149,7 @@ if(empty($_SESSION['loginSession']) || $_SESSION['loginSession'] == "Invalid"){
                             <table id="table-product">
                                 <thead>
                                 </thead>
-                                <tbody>
+                                <tbody class="tbody">
                                 </tbody>
                             </table>
                         </div>

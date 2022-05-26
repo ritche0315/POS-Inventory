@@ -395,13 +395,13 @@ body{
                             
                             tr{
                                 border-bottom: solid 1px $primaryColor1;
-                                #edit_btn{
+                                .edit-btn{
                                     font-size: 20px;
                                     color: $primaryColor1;
                                     margin: 0 5px;
                                 }
 
-                                #delete_btn{
+                                .delete-btn{
                                     font-size: 20px;
                                     color: $primaryColor8;
                                 }
@@ -529,14 +529,14 @@ body{
                 margin: 2rem;
                 :nth-child(n){
                     font-size: 1.7rem;
-                    padding: 3px 0;
+                    padding: 3px 3px;
                     margin: 0.3rem 0;
                     outline-color: $hoverColor1;
                 }
 
                 .form-group-fields{
                     border: solid 1px $primaryColor3;
-                    
+                  
                 }
 
                 .form-group-fields::placeholder{

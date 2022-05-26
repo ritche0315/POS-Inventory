@@ -1,7 +1,7 @@
 <dialog class="insert-modal" id="insert-modal">
     <form onsubmit="return false" id="form">
         <div class="row-1">
-            <p>Add New Product</p>
+            <p class="title-header">Add New Product</p>
         </div>
         <div class="row-2">
             <label for="prod-id" class="prod_id">ID No.</label>
