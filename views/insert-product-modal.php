@@ -1,4 +1,4 @@
-<dialog class="insert-modal" id="insert-modal">
+<dialog class="insert-modal update-modal" id="insert-modal">
     <form onsubmit="return false" id="form">
         <div class="row-1">
             <p class="title-header">Add New Product</p>
@@ -42,7 +42,7 @@
             <button id="save_btn">SAVE</button>
         </div>
 
-        <div class="insert_success">
+        <div class="insert_success update_success">
 
         </div>
     </form>

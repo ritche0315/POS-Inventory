@@ -125,11 +125,11 @@ function formValidate(action_crud){
 
             
         }
-        for(let i = 1; i < form_group.length; i++){
+        for(let i = 0; i < form_group.length; i++){
             form_group[i].addEventListener("keyup", function(){styleValidation(0)});
         }
     }
-    else{
+    else if(action == "delete"){
 
     }
 
@@ -170,16 +170,27 @@ save_btn_el.addEventListener("click", function(){
                             const insert_success = document.querySelector(".insert_success");
                             insert_success.textContent = "Record successfully added to the database!";
                             insert_success.style.display = "block";
-    
                             resetForm();
+                            getTableRows();
                         }
                     }
                 
                 }
             }else if(action == "edit"){
-
-            }else{
-
+                let values = getInputValues();
+                const xhr = helperAJAXrequest("POST", "../controllers/product-controller.php", "update="+values, true);
+                xhr.onload = function(){
+                    if(xhr.status == 200){
+                        if(parseInt(xhr.response) === 1){
+                            const update_success = document.querySelector(".update_success");
+                            update_success.textContent = "Record "+values.prod_id+" successfully updated from the database!";
+                            update_success.style.display = "block";
+                            resetForm();
+                            getTableRows();
+                        }
+                    }
+                
+                }
             }
            
         }

@@ -83,6 +83,21 @@ class Product extends Queries{
         echo $q->insertRecord($sql);
     }
    
+    public function updateProduct(){
+        $q = new Queries();
+        $sql = "UPDATE tblproduct set barcode='$this->prodBarcode', name='$this->prodName', description='$this->prodDesc', 
+        cat_id='$this->prodCategory', unit='$this->prodUnit', price1='$this->prodPrice1', price2='$this->prodPrice2', 
+        price3='$this->prodPrice3', qty='$this->prodQuantity', reorderlvl=$this->prodReorder, drawerNo='$this->prodDrawerNo', 
+        pstatus='$this->prodStatus' WHERE prod_id='$this->prodID'";
+
+        echo $q->updateRecord($sql);
+    }
+
+    public function deleteProduct(){
+        $q = new  Queries();
+        $sql = "DELETE FROM tblproduct WHERE prod_id='$this->prodID'";
+        echo $q->deleteRecord($sql);
+    }
 }
 
 

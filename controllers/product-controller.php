@@ -28,6 +28,17 @@ class ProductController{
             $data = $_REQUEST['insert'];
             $this->insertProductController($data);
         }
+
+        if(isset($_REQUEST['update'])){
+            $data = $_REQUEST['update'];
+            $this->updateProductController($data);
+        }
+
+        if(isset($_REQUEST['delete'])){
+            $data = $_REQUEST['delete'];
+            $this->deleteProductController($data);
+            
+        }
     }
    
 
@@ -56,6 +67,18 @@ class ProductController{
         $decoded_data->prod_unit, $decoded_data->prod_price1,$decoded_data->prod_price2,$decoded_data->prod_price3,$decoded_data->prod_qty, 
         $decoded_data->prod_reorder_lvl,$decoded_data->prod_drawer_no,$decoded_data->prod_status);
         $this->prod->insertProduct();
+    }
+
+    private function updateProductController($data){
+        $decoded_data = json_decode($data);
+        $this->prod = new Product($decoded_data->prod_id, $decoded_data->prod_barcode,$decoded_data->prod_select_category,$decoded_data->prod_name,$decoded_data->prod_desc, 
+        $decoded_data->prod_unit, $decoded_data->prod_price1,$decoded_data->prod_price2,$decoded_data->prod_price3,$decoded_data->prod_qty, 
+        $decoded_data->prod_reorder_lvl,$decoded_data->prod_drawer_no,$decoded_data->prod_status);
+        $this->prod->updateProduct();
+    }
+    private function deleteProductController($data){
+        $this->prod = new Product($data,0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->prod->deleteProduct();
     }
 }
 

@@ -327,16 +327,85 @@ function modal(){
     var tgt = e.target;
     var cur = e.currentTarget;
     var Rows = cur.rows;
-    console.log(tgt)
-    console.log(cur)
-    console.log(Rows)
 
     if (tgt !== cur && tgt.matches('.edit-btn')) {
         for (let i = 0; i < Rows.length; i++) {
             if (Rows[i].contains(tgt)) {
-                console.log(Rows[i].cells[0].innerText)
+                //set action to edit 
+                action = "edit";
+                // change title header
+                const title_header = document.querySelector(".title-header");
+                title_header.innerText = "Update Record";
+                // set visible prod_id
+                const prod_id_el = document.getElementsByClassName("prod_id");
+                const prod_id_id = document.getElementById("prod-id");
+                prod_id_id.disabled = true;
+                for(let i = 0; i < prod_id_el.length; i++){
+                  prod_id_el[i].style.display = "block";
+                }
+                const update_modal = document.getElementsByClassName("update-modal");
+                update_modal[0].showModal();
+                
+                prod_id.value = Rows[i].cells[1].innerText;
+                prod_barcode.value = Rows[i].cells[2].innerText;
+                prod_name.value = Rows[i].cells[3].innerText;
+                prod_desc.value = Rows[i].cells[4].innerText;
+
+                for(let j =0; j < prod_select_category.length; j++){
+                  if(prod_select_category[j].innerText == Rows[i].cells[5].innerText){
+                    prod_select_category.value = prod_select_category[j].value;
+                    break;
+                  }
+                }
+                prod_unit.value = Rows[i].cells[6].innerText;
+                prod_price1.value = Rows[i].cells[7].innerText;
+                prod_price2.value = Rows[i].cells[8].innerText;
+                prod_price3.value = Rows[i].cells[9].innerText;
+                prod_qty.value = Rows[i].cells[10].innerText;
+                prod_reorder_lvl.value = Rows[i].cells[11].innerText;
+                prod_drawer_no.value = Rows[i].cells[12].innerText;
+
+                
+                for(let j =0; j < prod_status.length; j++){
+                  if(prod_status[j].innerText == Rows[i].cells[13].innerText){
+                    prod_status.value = prod_status[j].value;
+                    break;
+                  }
+                }
+                
+                // close modal
+                const close_btn_el = document.getElementById("close_btn");
+                close_btn_el.addEventListener("click", function(){
+                  
+                  resetForm();
+                  update_modal[0].close();
+                });
+                
             }
         }
+    }
+
+    if (tgt !== cur && tgt.matches('.delete-btn')) {
+      for (let i = 0; i < Rows.length; i++) {
+        if (Rows[i].contains(tgt)) {
+          
+            let id_to_delete = Rows[i].cells[1].innerText;
+            if(confirm("Are you sure do you want to delete this record "+id_to_delete)){
+              action = "delete";
+              const xhr = helperAJAXrequest("POST", "../controllers/product-controller.php", "delete="+id_to_delete, true);
+              
+              xhr.onload = function(){
+                if(xhr.status == 200){
+                    if(parseInt(xhr.response) === 1){
+                        alert("Record "+id_to_delete+" successfully deleted from the database!");
+                    }
+                }
+            
+              }
+            }
+             
+        }
+      }
     }
   }
 
@@ -350,22 +419,44 @@ function modal(){
 
 function resetForm(){
    // reset / clear form
-   const insert_success = document.querySelector(".insert_success");
-  //  insert_success.style.display = "none";
-  for(let i=0; i < form_group.length; i++){
-    form_group[i].removeEventListener("keyup", styleValidation);
-  }
-  for(let i = 1; i < form_group.length; i++){
-      form_group[i].style.backgroundColor = "white";
-      form_group[i].style.borderColor = border_base_color;
-      form_group[i].style.color = "black";
-      form_group[i].placeholder = '';
-  }
-  // hide popup insertion success message in 3s.
-  setTimeout(() => {
-      insert_success.style.display = "none";
-  }, 3000);
-  form_el.reset();
+   if(action == "insert"){
+    const insert_success = document.querySelector(".insert_success");
+    //  insert_success.style.display = "none";
+    for(let i=0; i < form_group.length; i++){
+      form_group[i].removeEventListener("keyup", styleValidation);
+    }
+    for(let i = 1; i < form_group.length; i++){
+        form_group[i].style.backgroundColor = "white";
+        form_group[i].style.borderColor = border_base_color;
+        form_group[i].style.color = "black";
+        form_group[i].placeholder = '';
+    }
+    // hide popup insertion success message in 3s.
+    setTimeout(() => {
+        insert_success.style.display = "none";
+    }, 3000);
+    form_el.reset();
+   }
+   else if(action == "edit"){
+    const update_success = document.querySelector(".update_success");
+    for(let i=0; i < form_group.length; i++){
+      form_group[i].removeEventListener("keyup", styleValidation);
+    }
+    for(let i = 0; i < form_group.length; i++){
+        form_group[i].style.backgroundColor = "white";
+        form_group[i].style.borderColor = border_base_color;
+        form_group[i].style.color = "black";
+        form_group[i].placeholder = '';
+    }
+    // hide popup insertion success message in 3s.
+    setTimeout(() => {
+        update_success.style.display = "none";
+        const update_modal = document.getElementsByClassName("update-modal");
+        update_modal[0].close();
+    }, 3000);
+    form_el.reset();
+   }
+   
 }
 function helperAJAXrequest(method, url, data, type) {
 
