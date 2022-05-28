@@ -241,9 +241,16 @@ function displayList(dataSource, currentPage, records_per_page){
   let end = start + records_per_page;
   
   let html = ``;
+  let statusFormat = "";
   for(let i = start; i < end; i++){
       if(dataSource[i] == undefined){
           break;
+      }
+
+      if(parseInt(dataSource[i].prod_status) === 1){
+        statusFormat = "Active";
+      }else{
+        statusFormat = "Not Active";
       }
 
       let rowCount = i+1;
@@ -261,7 +268,7 @@ function displayList(dataSource, currentPage, records_per_page){
               <td>`+dataSource[i].prod_qty+`</td>
               <td>`+dataSource[i].prod_reorder_lvl+`</td>
               <td>`+dataSource[i].prod_drawer_No+`</td>
-              <td>`+dataSource[i].prod_status+`</td>
+              <td>`+statusFormat+`</td>
               <td>
                 <i class="fa-solid fa-square-pen edit-btn"></i>
                 <i class="fa-solid fa-trash-can delete-btn"></i>
@@ -376,8 +383,9 @@ function modal(){
                 // close modal
                 const close_btn_el = document.getElementById("close_btn");
                 close_btn_el.addEventListener("click", function(){
-                  
                   resetForm();
+                  const title_header = document.querySelector(".title-header");
+                  title_header.innerText = "Add New Product";
                   update_modal[0].close();
                 });
                 
@@ -398,6 +406,7 @@ function modal(){
                 if(xhr.status == 200){
                     if(parseInt(xhr.response) === 1){
                         alert("Record "+id_to_delete+" successfully deleted from the database!");
+                        getTableRows();
                     }
                 }
             
@@ -416,14 +425,21 @@ function modal(){
 
 // end of the insert modal code
 // HELPER FUNCTIONS
-
+function resetHandler(){
+  if(action == "insert"){
+    styleValidation(1);
+  }else if(action == "edit"){
+    styleValidation(0);
+  }
+}
 function resetForm(){
    // reset / clear form
    if(action == "insert"){
     const insert_success = document.querySelector(".insert_success");
-    //  insert_success.style.display = "none";
+
+    // remove listener
     for(let i=0; i < form_group.length; i++){
-      form_group[i].removeEventListener("keyup", styleValidation);
+      form_group[i].removeEventListener("keyup", resetHandler);
     }
     for(let i = 1; i < form_group.length; i++){
         form_group[i].style.backgroundColor = "white";
@@ -431,29 +447,19 @@ function resetForm(){
         form_group[i].style.color = "black";
         form_group[i].placeholder = '';
     }
-    // hide popup insertion success message in 3s.
-    setTimeout(() => {
-        insert_success.style.display = "none";
-    }, 3000);
+    
     form_el.reset();
    }
    else if(action == "edit"){
     const update_success = document.querySelector(".update_success");
-    for(let i=0; i < form_group.length; i++){
-      form_group[i].removeEventListener("keyup", styleValidation);
-    }
+    
     for(let i = 0; i < form_group.length; i++){
         form_group[i].style.backgroundColor = "white";
         form_group[i].style.borderColor = border_base_color;
         form_group[i].style.color = "black";
         form_group[i].placeholder = '';
     }
-    // hide popup insertion success message in 3s.
-    setTimeout(() => {
-        update_success.style.display = "none";
-        const update_modal = document.getElementsByClassName("update-modal");
-        update_modal[0].close();
-    }, 3000);
+    
     form_el.reset();
    }
    
